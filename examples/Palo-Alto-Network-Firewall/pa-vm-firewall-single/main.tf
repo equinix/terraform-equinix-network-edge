@@ -1,0 +1,45 @@
+provider "equinix" {
+  client_id     = var.equinix_client_id
+  client_secret = var.equinix_client_secret
+}
+
+module "pa-vm" {
+  source               = "../../../modules/Palo-Alto-Network-Firewall"
+  # version              = "1.0.0"
+  name                 = "tf-pa-vm-single"
+  metro_code           = var.metro_code_primary
+  platform             = "medium"
+  account_number       = "664566"
+  software_package     = "VM300"
+  connectivity         = "INTERNET-ACCESS"
+  project_id           = "e6be59d9-62c0-4140-aad6-150f0700203c"
+  #  software_version     = "10.1.10"
+  term_length          = 1
+  notifications        = ["test@test.com"]
+  hostname             = "pavm-pri"
+  additional_bandwidth = 100
+  acl_template_id      = equinix_network_acl_template.pa-vm-pri.id
+  ssh_key              = {
+    userName = "johndoe-primary"
+    keyName  = equinix_network_ssh_key.johndoe.name
+  }
+  license_token = "I3372903"
+}
+
+resource "equinix_network_ssh_key" "johndoe" {
+  name       = "johndoe-pri-0414-single-1"
+  public_key = var.ssh_rsa_public_key
+  project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
+}
+
+resource "equinix_network_acl_template" "pa-vm-pri" {
+  name        = "tf-pa-vm-pri"
+  description = "Primary Palo Alto Networks VM ACL template"
+  project_id  = "e6be59d9-62c0-4140-aad6-150f0700203c"
+  inbound_rule {
+    subnet   = "12.16.103.0/24"
+    protocol = "TCP"
+    src_port = "any"
+    dst_port = "22"
+  }
+}
