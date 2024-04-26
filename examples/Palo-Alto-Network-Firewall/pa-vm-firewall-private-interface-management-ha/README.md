@@ -1,6 +1,7 @@
 # Network Edge Palo Alto Firewall HA Device Example
 
 This example demonstrates creation of Network Edge Palo Alto Firewall HA device. It will:
+
 - Create a ACL template
 - Create an SSH key
 - Provision Palo Alto Firewall HA device
@@ -10,7 +11,6 @@ This example demonstrates creation of Network Edge Palo Alto Firewall HA device.
 To provision this example, you should clone the github repository and run terraform from within this directory:
 
 ```bash
-
 git clone https://github.com/equinix/terraform-equinix-network-edge.git
 cd terraform-equinix-network-edge/examples/pa-vm-firewall-ha
 terraform init
