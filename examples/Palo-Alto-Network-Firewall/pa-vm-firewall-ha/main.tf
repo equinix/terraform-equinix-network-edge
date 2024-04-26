@@ -5,7 +5,7 @@ provider "equinix" {
 
 module "pa_vm_ha" {
   source               = "../../../modules/Palo-Alto-Network-Firewall"
-  #  version              = "1.0.0"
+#  version              = "1.0.0"
   name                 = "tf-pa-vm-ha"
   metro_code           = var.metro_code_primary
   platform             = "medium"
@@ -22,7 +22,7 @@ module "pa_vm_ha" {
     userName = "johndoe-primary"
     keyName  = equinix_network_ssh_key.johndoe_pri.name
   }
-  secondary     = {
+  secondary = {
     enabled              = true
     metro_code           = var.metro_code_secondary
     hostname             = "nginx-sec"

@@ -5,8 +5,7 @@ provider "equinix" {
 
 module "pa_vm_ha" {
   source               = "../../../modules/Palo-Alto-Network-Firewall"
-  # source               = "equinix/pa-vm/equinix"
-  # version              = "1.1.0" # Use the latest version, according to https://github.com/equinix/terraform-equinix-pa-vm/releases
+#  version              = "1.1.0"
   name                 = "tf-pa-vm-ha"
   metro_code           = var.metro_code_primary
   platform             = "medium"
