@@ -9,7 +9,7 @@ module "pa_vm" {
   name                 = "tf-pa-vm-single"
   metro_code           = var.metro_code_primary
   platform             = "medium"
-  account_number       = "123456"
+  account_number       = "664566"
   software_package     = "VM300"
   connectivity         = "INTERNET-ACCESS"
   project_id           = "e6be59d9-62c0-4140-aad6-150f0700203c"
@@ -23,11 +23,10 @@ module "pa_vm" {
     userName = "johndoe-primary"
     keyName  = equinix_network_ssh_key.johndoe.name
   }
-  license_token = "I1234567"
 }
 
 resource "equinix_network_ssh_key" "johndoe" {
-  name       = "johndoe-pri-0414-single-1"
+  name       = "johndoe-pri-0414-single-15"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }

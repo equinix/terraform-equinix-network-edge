@@ -23,15 +23,14 @@ module "pa_vm_ha" {
     userName = "johndoe-primary"
     keyName  = equinix_network_ssh_key.johndoe_pri.name
   }
-  license_token = "I1234567"
-  secondary     = {
+  secondary = {
     enabled              = true
     metro_code           = var.metro_code_secondary
     hostname             = "nginx-sec"
     account_number       = "123456"
     additional_bandwidth = 50
     acl_template_id      = equinix_network_acl_template.pa_vm_sec.id
-    license_token        = "I1234567"
+    license_token        = var.license_token
   }
 
 }
