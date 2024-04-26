@@ -10,7 +10,7 @@ module "pa-vm-ha" {
   name                 = "tf-pa-vm-ha"
   metro_code           = var.metro_code_primary
   platform             = "medium"
-  account_number       = "664566"
+  account_number       = "123456"
   software_package     = "VM300"
   project_id           = "e6be59d9-62c0-4140-aad6-150f0700203c"
   term_length          = 1
@@ -18,36 +18,36 @@ module "pa-vm-ha" {
   notifications        = ["test@test.com"]
   hostname             = "pavm-pri"
   additional_bandwidth = 100
-  acl_template_id      = equinix_network_acl_template.pa-vm-pri.id
+  acl_template_id      = equinix_network_acl_template.pa_vm_pri.id
   ssh_key              = {
     userName = "johndoe-primary"
-    keyName  = equinix_network_ssh_key.johndoe-pri.name
+    keyName  = equinix_network_ssh_key.johndoe_pri.name
   }
-  license_token = "I3372903"
+  license_token = "I1234567"
   secondary     = {
     enabled              = true
     metro_code           = var.metro_code_secondary
     hostname             = "nginx-sec"
-    account_number       = "664566"
+    account_number       = "123456"
     additional_bandwidth = 50
-    acl_template_id      = equinix_network_acl_template.pa-vm-sec.id
-    license_token        = "I3372903"
+    acl_template_id      = equinix_network_acl_template.pa_vm_sec.id
+    license_token        = "I1234567"
   }
 
 }
 
-resource "equinix_network_ssh_key" "johndoe-pri" {
+resource "equinix_network_ssh_key" "johndoe_pri" {
   name       = "johndoe-pri-0425-2"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }
 
-resource "equinix_network_ssh_key" "johndoe-sec" {
+resource "equinix_network_ssh_key" "johndoe_sec" {
   name       = "johndoe-sec-0425-2"
   public_key = var.ssh_rsa_public_key
 }
 
-resource "equinix_network_acl_template" "pa-vm-pri" {
+resource "equinix_network_acl_template" "pa_vm_pri" {
   name        = "tf-pa-vm-pri"
   description = "Primary Palo Alto Networks VM ACL template"
   project_id  = "e6be59d9-62c0-4140-aad6-150f0700203c"
@@ -59,7 +59,7 @@ resource "equinix_network_acl_template" "pa-vm-pri" {
   }
 }
 
-resource "equinix_network_acl_template" "pa-vm-sec" {
+resource "equinix_network_acl_template" "pa_vm_sec" {
   name        = "tf-pa-vm-sec"
   description = "Secondary Palo Alto Networks VM ACL template"
   inbound_rule {

@@ -3,13 +3,13 @@ provider "equinix" {
   client_secret = var.equinix_client_secret
 }
 
-module "pa-vm-ha" {
+module "pa_vm_ha" {
   source           = "../../../modules/Palo-Alto-Network-Firewall"
   #  version          = "1.0.0"
   name             = "tf-pa-vm-ha"
   metro_code       = var.metro_code_primary
   platform         = "small"
-  account_number   = "664566"
+  account_number   = "123456"
   software_package = "VM300"
   project_id       = "e6be59d9-62c0-4140-aad6-150f0700203c"
   term_length      = 1
@@ -17,26 +17,26 @@ module "pa-vm-ha" {
   hostname         = "pavm-pri"
   ssh_key          = {
     userName = "johndoe-primary"
-    keyName  = equinix_network_ssh_key.johndoe-pri.name
+    keyName  = equinix_network_ssh_key.johndoe_pri.name
   }
-  license_token = "I3372903"
+  license_token = "I1234567"
   secondary     = {
     enabled        = true
     metro_code     = var.metro_code_secondary
     hostname       = "nginx-sec"
-    account_number = "664566"
-    license_token  = "I3372903"
+    account_number = "123456"
+    license_token  = "I1234567"
   }
 
 }
 
-resource "equinix_network_ssh_key" "johndoe-pri" {
+resource "equinix_network_ssh_key" "johndoe_pri" {
   name       = "johndoe-pri-0424-3"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }
 
-resource "equinix_network_ssh_key" "johndoe-sec" {
+resource "equinix_network_ssh_key" "johndoe_sec" {
   name       = "johndoe-sec-0425-2"
   public_key = var.ssh_rsa_public_key
 }
