@@ -51,11 +51,6 @@ variable "hostname" {
   default     = ""
 }
 
-variable "license_token" {
-  description = "License Token"
-  type        = string
-}
-
 variable "term_length" {
   description = "Term length in months"
   type        = number

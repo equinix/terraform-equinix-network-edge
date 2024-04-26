@@ -96,13 +96,14 @@ resource "equinix_network_device" "cluster" {
       vendor_configuration {
         hostname = var.cluster.node0_vendor_configuration_hostname
       }
-      license_token = var.license_token
+      license_token = "I1234567"
+
     }
     node1 {
       vendor_configuration {
         hostname = var.cluster.node1_vendor_configuration_hostname
       }
-      license_token = var.license_token
+      license_token = "I1234567"
     }
 
   }
