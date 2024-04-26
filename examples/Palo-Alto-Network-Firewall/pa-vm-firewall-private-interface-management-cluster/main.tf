@@ -17,7 +17,7 @@ module "pa_vm_cluster" {
   notifications          = ["test@test.com"]
   hostname               = "pavm-pri"
   additional_bandwidth   = 100
-  acl_template_id        = equinix_network_acl_template.pa-vm-cluster-wan-acl.id
+  acl_template_id        = equinix_network_acl_template.pa_vm_cluster_wan_acl.id
   mgmt_acl_template_uuid = equinix_network_acl_template.pa_vm_cluster_mgmt_acl.id
   ssh_key                = {
     userName = "johndoe-primary"
@@ -50,7 +50,7 @@ resource "equinix_network_acl_template" "pa_vm_cluster_mgmt_acl" {
   }
 }
 
-resource "equinix_network_acl_template" "pa-vm-cluster-wan-acl" {
+resource "equinix_network_acl_template" "pa_vm_cluster_wan_acl" {
   name        = "tf-pa-vm-cluster-wan"
   description = "Secondary Palo Alto Networks VM ACL template"
   inbound_rule {
