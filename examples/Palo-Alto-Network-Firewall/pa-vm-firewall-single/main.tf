@@ -5,7 +5,6 @@ provider "equinix" {
 
 module "pa_vm" {
   source               = "../../../modules/Palo-Alto-Network-Firewall"
-#  version              = "1.0.0"
   name                 = "tf-pa-vm-single"
   metro_code           = var.metro_code_primary
   platform             = "medium"
@@ -13,7 +12,6 @@ module "pa_vm" {
   software_package     = "VM300"
   connectivity         = "INTERNET-ACCESS"
   project_id           = "e6be59d9-62c0-4140-aad6-150f0700203c"
-  #  software_version     = "10.1.10"
   term_length          = 1
   notifications        = ["test@test.com"]
   hostname             = "pavm-pri"

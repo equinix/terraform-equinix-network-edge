@@ -5,7 +5,6 @@ provider "equinix" {
 
 module "pa_vm_cluster" {
   source           = "../../../modules/Palo-Alto-Network-Firewall"
-#  version          = "1.0.0"
   name             = "tf-pa-vm-cluster"
   metro_code       = var.metro_code_primary
   platform         = "medium"

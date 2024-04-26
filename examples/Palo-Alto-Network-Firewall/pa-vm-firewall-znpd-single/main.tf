@@ -5,7 +5,6 @@ provider "equinix" {
 
 module "pa_vm" {
   source           = "../../../modules/Palo-Alto-Network-Firewall"
-#  version          = "1.0.0"
   name             = "tf-pa-vm-single"
   metro_code       = var.metro_code_primary
   platform         = "small"
