@@ -28,8 +28,9 @@ module "pa_vm_cluster" {
     name                                = "test-pa-vm-cluster"
     node0_vendor_configuration_hostname = "node0"
     node1_vendor_configuration_hostname = "node1"
+    license_token                       = var.license_token
   }
-  license_token = "I1234567"
+  license_token = ""
 }
 
 resource "equinix_network_ssh_key" "johndoe_pri" {
