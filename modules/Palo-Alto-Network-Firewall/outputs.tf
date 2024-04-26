@@ -25,7 +25,7 @@ output "cpu_count" {
 
 output "memory" {
   description = "Device memory amount"
-  value       = join(" ", [
+  value = join(" ", [
     data.equinix_network_device_platform.this.memory, data.equinix_network_device_platform.this.memory_unit
   ])
 }
@@ -62,7 +62,7 @@ output "interfaces" {
 
 output "secondary" {
   description = "Secondary device attributes"
-  value       = !var.cluster.enabled && var.secondary.enabled ? {
+  value = !var.cluster.enabled && var.secondary.enabled ? {
     id             = equinix_network_device.non_cluster[0].secondary_device[0].uuid
     status         = equinix_network_device.non_cluster[0].secondary_device[0].status
     license_status = equinix_network_device.non_cluster[0].secondary_device[0].license_status
