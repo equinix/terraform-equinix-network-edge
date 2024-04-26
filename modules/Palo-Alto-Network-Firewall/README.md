@@ -86,8 +86,6 @@ No modules.
 | <a name="output_ssh_ip_fqdn"></a> [ssh\_ip\_fqdn](#output\_ssh\_ip\_fqdn)              | Device SSH interface FQDN       |
 | <a name="output_status"></a> [status](#output\_status)                                 | Device provisioning status      |
 
-<!-- END_TF_DOCS -->
-
 ## Examples
 
 - [Network Edge PA-VM single device](https://registry.terraform.io/modules/equinix/terraform-equinix-network-edge/examples/pa-vm-firewall-single/)
