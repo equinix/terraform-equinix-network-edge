@@ -3,7 +3,7 @@ provider "equinix" {
   client_secret = var.equinix_client_secret
 }
 
-module "pa-vm" {
+module "pa_vm" {
   source               = "../../../modules/Palo-Alto-Network-Firewall"
   #  version              = "1.0.0"
   name                 = "tf-pa-vm-single"

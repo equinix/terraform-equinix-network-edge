@@ -3,7 +3,7 @@ provider "equinix" {
   client_secret = var.equinix_client_secret
 }
 
-module "pa-vm-ha" {
+module "pa_vm_ha" {
   source               = "../../../modules/Palo-Alto-Network-Firewall"
   # source               = "equinix/pa-vm/equinix"
   # version              = "1.1.0" # Use the latest version, according to https://github.com/equinix/terraform-equinix-pa-vm/releases

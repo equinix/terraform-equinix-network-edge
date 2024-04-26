@@ -17,11 +17,11 @@ module "pa_vm_cluster" {
   hostname               = "pavm-pri"
   additional_bandwidth   = 100
   connectivity           = "INTERNET-ACCESS"
-  acl_template_id        = equinix_network_acl_template.pa-vm-cluster-wan-acl.id
-  mgmt_acl_template_uuid = equinix_network_acl_template.pa-vm-cluster-mgmt-acl.id
+  acl_template_id        = equinix_network_acl_template.pa_vm_cluster_wan_acl.id
+  mgmt_acl_template_uuid = equinix_network_acl_template.pa_vm_cluster_mgmt_acl.id
   ssh_key                = {
     userName = "johndoe-primary"
-    keyName  = equinix_network_ssh_key.johndoe-pri.name
+    keyName  = equinix_network_ssh_key.johndoe_pri.name
   }
   cluster = {
     enabled                             = true
@@ -32,13 +32,13 @@ module "pa_vm_cluster" {
   license_token = "I1234567"
 }
 
-resource "equinix_network_ssh_key" "johndoe-pri" {
+resource "equinix_network_ssh_key" "johndoe_pri" {
   name       = "johndoe-pri-0414-6"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203x"
 }
 
-resource "equinix_network_acl_template" "pa-vm-cluster-mgmt-acl" {
+resource "equinix_network_acl_template" "pa_vm_cluster_mgmt_acl" {
   name        = "tf-pa-vm-cluster-mgmt"
   description = "Primary Palo Alto Networks VM ACL template"
   project_id  = "e6be59d9-62c0-4140-aad6-150f0700203c"
@@ -50,7 +50,7 @@ resource "equinix_network_acl_template" "pa-vm-cluster-mgmt-acl" {
   }
 }
 
-resource "equinix_network_acl_template" "pa-vm-cluster-wan-acl" {
+resource "equinix_network_acl_template" "pa_vm_cluster_wan_acl" {
   name        = "tf-pa-vm-cluster-wan"
   description = "Secondary Palo Alto Networks VM ACL template"
   inbound_rule {
