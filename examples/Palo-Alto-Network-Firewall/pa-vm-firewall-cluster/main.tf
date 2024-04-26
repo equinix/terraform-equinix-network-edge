@@ -3,7 +3,6 @@ provider "equinix" {
   client_secret = var.equinix_client_secret
 }
 
-//noinspection MissingProperty
 module "pa_vm_cluster" {
   source                 = "../../../modules/Palo-Alto-Network-Firewall"
   #  version          = "1.0.0"
@@ -29,6 +28,7 @@ module "pa_vm_cluster" {
     name                                = "test-pa-vm-cluster"
     node0_vendor_configuration_hostname = "node0"
     node1_vendor_configuration_hostname = "node1"
+    license_token                       = var.license_token
   }
 }
 
