@@ -12,7 +12,7 @@ module "pa_vm" {
   account_number       = "123456"
   software_package     = "VM300"
   connectivity         = "INTERNET-ACCESS"
-  project_id           = "e6be59d9-62c0-4140-aad6-150f0700203x"
+  project_id           = "e6be59d9-62c0-4140-aad6-150f0700203c"
   #  software_version     = "10.1.10"
   term_length          = 1
   notifications        = ["test@test.com"]
@@ -29,13 +29,13 @@ module "pa_vm" {
 resource "equinix_network_ssh_key" "johndoe" {
   name       = "johndoe-pri-0414-single-1"
   public_key = var.ssh_rsa_public_key
-  project_id = "e6be59d9-62c0-4140-aad6-150f0700203x"
+  project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }
 
 resource "equinix_network_acl_template" "pa_vm_pri" {
   name        = "tf-pa-vm-pri"
   description = "Primary Palo Alto Networks VM ACL template"
-  project_id  = "e6be59d9-62c0-4140-aad6-150f0700203x"
+  project_id  = "e6be59d9-62c0-4140-aad6-150f0700203c"
   inbound_rule {
     subnet   = "12.16.103.0/24"
     protocol = "TCP"

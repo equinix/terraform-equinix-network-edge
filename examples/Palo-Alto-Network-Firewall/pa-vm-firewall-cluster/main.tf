@@ -35,7 +35,7 @@ module "pa_vm_cluster" {
 resource "equinix_network_ssh_key" "johndoe_pri" {
   name       = "johndoe-pri-0414-6"
   public_key = var.ssh_rsa_public_key
-  project_id = "e6be59d9-62c0-4140-aad6-150f0700203x"
+  project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }
 
 resource "equinix_network_acl_template" "pa_vm_cluster_mgmt_acl" {
