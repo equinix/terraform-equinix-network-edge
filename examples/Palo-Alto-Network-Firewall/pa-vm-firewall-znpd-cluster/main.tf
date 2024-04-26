@@ -3,6 +3,7 @@ provider "equinix" {
   client_secret = var.equinix_client_secret
 }
 
+//noinspection MissingProperty
 module "pa_vm_cluster" {
   source           = "../../../modules/Palo-Alto-Network-Firewall"
   #  version          = "1.0.0"
@@ -27,11 +28,10 @@ module "pa_vm_cluster" {
     node1_vendor_configuration_hostname = "node1"
     license_token                       = var.license_token
   }
-  license_token = ""
 }
 
 resource "equinix_network_ssh_key" "johndoe_pri" {
-  name       = "johndoe-pri-0414-6"
+  name       = "johndoe-pri-0426-11"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }

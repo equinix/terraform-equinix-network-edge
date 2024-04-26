@@ -19,24 +19,23 @@ module "pa_vm_ha" {
     userName = "johndoe-primary"
     keyName  = equinix_network_ssh_key.johndoe_pri.name
   }
-  license_token = "I1234567"
-  secondary     = {
+  secondary = {
     enabled        = true
     metro_code     = var.metro_code_secondary
     hostname       = "nginx-sec"
     account_number = "123456"
-    license_token  = "I1234567"
+    license_token  = var.license_token
   }
 
 }
 
 resource "equinix_network_ssh_key" "johndoe_pri" {
-  name       = "johndoe-pri-0424-3"
+  name       = "johndoe-pri-0426-10"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }
 
 resource "equinix_network_ssh_key" "johndoe_sec" {
-  name       = "johndoe-sec-0425-2"
+  name       = "johndoe-pri-0426-10"
   public_key = var.ssh_rsa_public_key
 }

@@ -20,11 +20,11 @@ module "pa_vm" {
     userName = "johndoe-primary"
     keyName  = equinix_network_ssh_key.johndoe.name
   }
-  license_token = "I1234567"
+  license_token = "I3372903"
 }
 
 resource "equinix_network_ssh_key" "johndoe" {
-  name       = "johndoe-pri-0414-single-5"
+  name       = "johndoe-pri-0414-single-7"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }

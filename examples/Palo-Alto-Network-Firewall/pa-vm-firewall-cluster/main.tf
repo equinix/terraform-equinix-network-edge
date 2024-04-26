@@ -3,14 +3,15 @@ provider "equinix" {
   client_secret = var.equinix_client_secret
 }
 
+//noinspection MissingProperty
 module "pa_vm_cluster" {
   source                 = "../../../modules/Palo-Alto-Network-Firewall"
   #  version          = "1.0.0"
   name                   = "tf-pa-vm-cluster"
   metro_code             = var.metro_code_primary
   platform               = "medium"
-  account_number   = "664566"
-  software_package = "VM300"
+  account_number         = "123456"
+  software_package       = "VM300"
   project_id             = "e6be59d9-62c0-4140-aad6-150f0700203c"
   term_length            = 1
   notifications          = ["test@test.com"]
@@ -32,7 +33,7 @@ module "pa_vm_cluster" {
 }
 
 resource "equinix_network_ssh_key" "johndoe_pri" {
-  name       = "johndoe-pri-0426-6"
+  name       = "johndoe-pri-0426-12"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }

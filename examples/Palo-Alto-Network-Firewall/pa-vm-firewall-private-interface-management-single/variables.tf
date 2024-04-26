@@ -12,7 +12,13 @@ variable "metro_code_primary" {
   description = "Device location metro code"
   type        = string
 }
+
 variable "ssh_rsa_public_key" {
   description = "SSH RSA public key"
+  type        = string
+}
+
+variable "license_token" {
+  description = "License Token"
   type        = string
 }

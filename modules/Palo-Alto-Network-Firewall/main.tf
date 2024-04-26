@@ -51,6 +51,7 @@ resource "equinix_network_device" "non_cluster" {
     for_each = var.secondary.enabled ? [1] : []
     content {
       name                 = "${var.name}-secondary"
+      license_token        = try(var.secondary.license_token, null)
       hostname             = var.secondary.hostname
       metro_code           = var.secondary.metro_code
       account_number       = var.secondary.account_number
@@ -96,15 +97,13 @@ resource "equinix_network_device" "cluster" {
       vendor_configuration {
         hostname = var.cluster.node0_vendor_configuration_hostname
       }
-      license_token = "I1234567"
-
+      license_token = var.cluster.license_token
     }
     node1 {
       vendor_configuration {
         hostname = var.cluster.node1_vendor_configuration_hostname
       }
-      license_token = "I1234567"
+      license_token = var.cluster.license_token
     }
-
   }
 }
