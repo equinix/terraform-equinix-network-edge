@@ -17,7 +17,7 @@ module "pa_vm_ha" {
   hostname             = "pavm-pri"
   additional_bandwidth = 100
   acl_template_id      = equinix_network_acl_template.pa_vm_pri.id
-  ssh_key              = {
+  ssh_key = {
     userName = "johndoe-primary"
     keyName  = equinix_network_ssh_key.johndoe_pri.name
   }

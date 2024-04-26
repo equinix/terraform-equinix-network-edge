@@ -18,7 +18,7 @@ module "pa_vm_cluster" {
   connectivity           = "INTERNET-ACCESS"
   acl_template_id        = equinix_network_acl_template.pa_vm_cluster_wan_acl.id
   mgmt_acl_template_uuid = equinix_network_acl_template.pa_vm_cluster_mgmt_acl.id
-  ssh_key                = {
+  ssh_key = {
     userName = "johndoe-primary"
     keyName  = equinix_network_ssh_key.johndoe_pri.name
   }

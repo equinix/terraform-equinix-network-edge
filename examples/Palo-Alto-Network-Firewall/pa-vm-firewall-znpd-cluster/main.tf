@@ -15,7 +15,7 @@ module "pa_vm_cluster" {
   term_length      = 1
   notifications    = ["test@test.com"]
   hostname         = "pavm-pri"
-  ssh_key          = {
+  ssh_key = {
     userName = "johndoe-primary"
     keyName  = equinix_network_ssh_key.johndoe_pri.name
   }
