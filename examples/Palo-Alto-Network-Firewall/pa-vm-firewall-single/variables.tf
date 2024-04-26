@@ -17,3 +17,8 @@ variable "ssh_rsa_public_key" {
   description = "SSH RSA public key"
   type        = string
 }
+
+variable "license_token" {
+  description = "License Token"
+  type        = string
+}
