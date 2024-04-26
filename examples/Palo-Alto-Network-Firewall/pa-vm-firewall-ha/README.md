@@ -57,5 +57,4 @@ resources.
 | Name                                                                             | Description            |
 |----------------------------------------------------------------------------------|------------------------|
 | <a name="output_device_details"></a> [device\_details](#output\_device\_details) | Virtual device details |
-
 <!-- END_TF_DOCS -->
