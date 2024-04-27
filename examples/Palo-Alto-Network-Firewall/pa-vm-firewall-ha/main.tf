@@ -8,7 +8,7 @@ module "pa_vm_ha" {
   name                 = "tf-pa-vm-ha"
   metro_code           = var.metro_code_primary
   platform             = "medium"
-  account_number       = "664566"
+  account_number       = "123456"
   software_package     = "VM300"
   project_id           = "e6be59d9-62c0-4140-aad6-150f0700203c"
   term_length          = 1
@@ -25,7 +25,7 @@ module "pa_vm_ha" {
     enabled              = true
     metro_code           = var.metro_code_secondary
     hostname             = "nginx-sec"
-    account_number       = "664566"
+    account_number       = "123456"
     additional_bandwidth = 50
     acl_template_id      = equinix_network_acl_template.pa_vm_sec.id
     license_token        = var.license_token
