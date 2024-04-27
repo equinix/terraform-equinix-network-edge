@@ -8,7 +8,7 @@ module "pa_vm" {
   name                 = "tf-pa-vm-single"
   metro_code           = var.metro_code_primary
   platform             = "medium"
-  account_number       = "664566"
+  account_number       = "123456"
   software_package     = "VM300"
   connectivity         = "INTERNET-ACCESS"
   project_id           = "e6be59d9-62c0-4140-aad6-150f0700203c"
