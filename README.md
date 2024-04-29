@@ -1,12 +1,12 @@
-# terraform-equinix-template
+# terraform-equinix-network-edge
 
 <!-- TEMPLATE: Review all "TEMPLATE" comments and remove them when applied. -->
 <!-- TEMPLATE: replace "template" with the name of your project. The prefix "terraform-equinix-" informs the Terraform registry that this project is a Terraform module associated with the Equinix provider, preserve this prefix. -->
 [![Experimental](https://img.shields.io/badge/Stability-Experimental-red.svg)](https://github.com/equinix-labs/standards#about-uniform-standards)
-[![run-pre-commit-hooks](https://github.com/equinix-labs/terraform-equinix-template/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/equinix-labs/terraform-equinix-template/actions/workflows/pre-commit.yaml)
-[![generate-terraform-docs](https://github.com/equinix-labs/terraform-equinix-template/actions/workflows/documentation.yaml/badge.svg)](https://github.com/equinix-labs/terraform-equinix-template/actions/workflows/documentation.yaml)
+[![run-pre-commit-hooks](https://github.com/equinix-labs/terraform-equinix-network-edge/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/equinix/terraform-equinix-network-edge/actions/workflows/pre-commit.yaml)
+[![generate-terraform-docs](https://github.com/equinix/terraform-equinix-network-edge/actions/workflows/documentation.yaml/badge.svg)](https://github.com/equinix/terraform-equinix-network-edge/actions/workflows/documentation.yaml)
 
-`terraform-equinix-template` is a minimal Terraform module that
+`terraform-equinix-network-edge` is a minimal Terraform module that
 utilizes [Terraform providers for Equinix](https://registry.terraform.io/namespaces/equinix) to provision digital
 infrastructure and demonstrate higher level integrations.
 
