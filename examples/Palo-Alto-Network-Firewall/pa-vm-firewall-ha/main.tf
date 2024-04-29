@@ -24,7 +24,7 @@ module "pa_vm_ha" {
   secondary = {
     enabled              = true
     metro_code           = var.metro_code_secondary
-    hostname             = "nginx-sec"
+    hostname             = "pavm-sec"
     account_number       = "123456"
     additional_bandwidth = 50
     acl_template_id      = equinix_network_acl_template.pa_vm_sec.id

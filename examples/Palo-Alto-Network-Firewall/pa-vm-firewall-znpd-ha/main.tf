@@ -21,7 +21,7 @@ module "pa_vm_ha" {
   secondary = {
     enabled        = true
     metro_code     = var.metro_code_secondary
-    hostname       = "nginx-sec"
+    hostname       = "pavm-sec"
     account_number = "123456"
     license_token  = var.license_token
   }
