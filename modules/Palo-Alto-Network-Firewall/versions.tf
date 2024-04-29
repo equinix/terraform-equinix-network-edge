@@ -6,7 +6,4 @@ terraform {
       version = "~> 1.36.0"
     }
   }
-  provider_meta "equinix" {
-    module_name = "terraform-equinix-network-edge"
-  }
 }
