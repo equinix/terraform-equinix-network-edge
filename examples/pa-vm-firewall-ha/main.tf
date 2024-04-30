@@ -4,7 +4,7 @@ provider "equinix" {
 }
 
 module "pa_vm_ha" {
-  source               = "../../../modules/Palo-Alto-Network-Firewall"
+  source               = "../../modules/palo-alto-network-firewall"
   name                 = "tf-pa-vm-ha"
   metro_code           = var.metro_code_primary
   platform             = "medium"
@@ -12,7 +12,7 @@ module "pa_vm_ha" {
   software_package     = "VM300"
   project_id           = "e6be59d9-62c0-4140-aad6-150f0700203c"
   term_length          = 1
-  connectivity         = "INTERNET-ACCESS-WITH-PRVT-MGMT"
+  connectivity         = "INTERNET-ACCESS"
   notifications        = ["test@test.com"]
   hostname             = "pavm-pri"
   additional_bandwidth = 100

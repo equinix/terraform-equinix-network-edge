@@ -19,14 +19,6 @@ terraform apply
 
 Note that this example may create resources which cost money. Run 'terraform destroy' when you don't need these resources.
 
-## Variables
-
-See <https://registry.terraform.io/modules/equinix-labs/network-edge-device-nginx/equinix/latest?tab=inputs> for a description of all variables.
-
-## Outputs
-
-See <https://registry.terraform.io/modules/equinix-labs/network-edge-device-nginx/equinix/latest?tab=outputs> for a description of all outputs.
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

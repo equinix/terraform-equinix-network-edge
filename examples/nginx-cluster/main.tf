@@ -4,7 +4,7 @@ provider "equinix" {
 }
 
 module "nginx_cluster" {
-  source                 = "../../../modules/nginx"
+  source                 = "../../modules/nginx"
   name                   = "terraform-test-NGINX-cluster1"
   metro_code             = var.metro_code_primary
   account_number         = "123456"

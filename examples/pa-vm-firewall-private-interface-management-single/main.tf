@@ -4,13 +4,13 @@ provider "equinix" {
 }
 
 module "pa_vm" {
-  source               = "../../../modules/Palo-Alto-Network-Firewall"
+  source               = "../../modules/palo-alto-network-firewall"
   name                 = "tf-pa-vm-single"
   metro_code           = var.metro_code_primary
   platform             = "medium"
   account_number       = "123456"
   software_package     = "VM300"
-  connectivity         = "INTERNET-ACCESS"
+  connectivity         = "INTERNET-ACCESS-WITH-PRVT-MGMT"
   project_id           = "e6be59d9-62c0-4140-aad6-150f0700203c"
   term_length          = 1
   notifications        = ["test@test.com"]
@@ -24,7 +24,7 @@ module "pa_vm" {
 }
 
 resource "equinix_network_ssh_key" "johndoe" {
-  name       = "johndoe-pri-0414-single-15"
+  name       = "johndoe-pri-0424-single-3"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }
