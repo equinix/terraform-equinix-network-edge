@@ -37,7 +37,7 @@ Note that this example may create resources which cost money. Run 'terraform des
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_nginx_single"></a> [nginx\_single](#module\_nginx\_single) | ../../../modules/nginx | n/a |
+| <a name="module_nginx_single"></a> [nginx\_single](#module\_nginx\_single) | ../../modules/nginx | n/a |
 
 ## Resources
 

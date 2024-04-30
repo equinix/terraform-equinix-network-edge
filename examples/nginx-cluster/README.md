@@ -37,7 +37,7 @@ Note that this example may create resources which cost money. Run 'terraform des
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_nginx_cluster"></a> [nginx\_cluster](#module\_nginx\_cluster) | ../../../modules/nginx | n/a |
+| <a name="module_nginx_cluster"></a> [nginx\_cluster](#module\_nginx\_cluster) | ../../modules/nginx | n/a |
 
 ## Resources
 
