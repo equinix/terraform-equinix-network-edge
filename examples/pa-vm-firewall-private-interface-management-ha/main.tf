@@ -4,7 +4,7 @@ provider "equinix" {
 }
 
 module "pa_vm_ha" {
-  source               = "../../modules/Palo-Alto-Network-Firewall"
+  source               = "../../modules/palo-alto-network-firewall"
   name                 = "tf-pa-vm-ha"
   metro_code           = var.metro_code_primary
   platform             = "medium"
