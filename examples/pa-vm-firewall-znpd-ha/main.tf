@@ -3,13 +3,12 @@ provider "equinix" {
   client_secret = var.equinix_client_secret
 }
 
-module "pa_vm_cluster" {
-  source           = "../../../modules/Palo-Alto-Network-Firewall"
-  name             = "tf-pa-vm-cluster"
+module "pa_vm_ha" {
+  source           = "../../modules/Palo-Alto-Network-Firewall"
+  name             = "tf-pa-vm-ha"
   metro_code       = var.metro_code_primary
-  platform         = "medium"
+  platform         = "small"
   account_number   = "123456"
-  connectivity     = "PRIVATE"
   software_package = "VM300"
   project_id       = "e6be59d9-62c0-4140-aad6-150f0700203c"
   term_length      = 1
@@ -19,17 +18,23 @@ module "pa_vm_cluster" {
     userName = "johndoe-primary"
     keyName  = equinix_network_ssh_key.johndoe_pri.name
   }
-  cluster = {
-    enabled                             = true
-    name                                = "test-pa-vm-cluster"
-    node0_vendor_configuration_hostname = "node0"
-    node1_vendor_configuration_hostname = "node1"
-    license_token                       = var.license_token
+  secondary = {
+    enabled        = true
+    metro_code     = var.metro_code_secondary
+    hostname       = "pavm-sec"
+    account_number = "123456"
+    license_token  = var.license_token
   }
+
 }
 
 resource "equinix_network_ssh_key" "johndoe_pri" {
-  name       = "johndoe-pri-0426-11"
+  name       = "johndoe-pri-0426-10"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
+}
+
+resource "equinix_network_ssh_key" "johndoe_sec" {
+  name       = "johndoe-pri-0426-10"
+  public_key = var.ssh_rsa_public_key
 }

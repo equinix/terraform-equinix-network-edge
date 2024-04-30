@@ -4,7 +4,7 @@ provider "equinix" {
 }
 
 module "nginx_ha" {
-  source                 = "../../../modules/nginx"
+  source                 = "../../modules/nginx"
   name                   = "terraform-test-NGINX-ha"
   hostname               = "nginx-pri"
   metro_code             = var.metro_code_primary
