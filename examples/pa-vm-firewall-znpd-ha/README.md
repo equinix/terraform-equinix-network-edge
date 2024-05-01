@@ -38,7 +38,7 @@ resources.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_pa_vm_ha"></a> [pa\_vm\_ha](#module\_pa\_vm\_ha) | ../../../modules/Palo-Alto-Network-Firewall | n/a |
+| <a name="module_pa_vm_ha"></a> [pa\_vm\_ha](#module\_pa\_vm\_ha) | ../../modules/palo-alto-network-firewall | n/a |
 
 ## Resources
 
