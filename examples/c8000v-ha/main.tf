@@ -20,7 +20,7 @@ module "c8000v_ha" {
   acl_template_id      = equinix_network_acl_template.c8000v_pri.id
   ssh_key = {
     userName = "johndoe-primary"
-    keyName  = equinix_network_ssh_key.johndoe-pri.name
+    keyName  = equinix_network_ssh_key.johndoe_pri.name
   }
   secondary = {
     enabled              = true
@@ -33,13 +33,13 @@ module "c8000v_ha" {
   }
 }
 
-resource "equinix_network_ssh_key" "johndoe-pri" {
+resource "equinix_network_ssh_key" "johndoe_pri" {
   name       = "johndoe-pri-0430-3"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }
 
-resource "equinix_network_ssh_key" "johndoe-sec" {
+resource "equinix_network_ssh_key" "johndoe_sec" {
   name       = "johndoe-sec-0430-3"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
