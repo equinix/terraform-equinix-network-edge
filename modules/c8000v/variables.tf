@@ -82,7 +82,7 @@ variable "notifications" {
 }
 
 variable "acl_template_id" {
-  description = "Identifier of an management ACL template that will be applied on a device"
+  description = "Identifier of an ACL template that will be applied on a device"
   type        = string
   validation {
     condition     = !try(var.acl_template_id != null, true)
@@ -141,6 +141,6 @@ variable "secondary" {
   }
   validation {
     condition     = !try(var.secondary.enabled, false) || try(var.secondary.acl_template_id != null, true)
-    error_message = "Secondary management Acl template is required."
+    error_message = "Secondary Acl template is required."
   }
 }
