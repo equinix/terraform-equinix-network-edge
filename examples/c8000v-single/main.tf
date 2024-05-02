@@ -9,7 +9,7 @@ module "c8000v" {
   metro_code           = var.metro_code_primary
   platform             = "medium"
   account_number       = "664566"
-  license_token        = "ZTRjZTdlYmYtZjQ3Zi00MGI5LWJhMjMtNjQ0MWZiZWNhZWEyLTE1OTQ5NjU2"
+  license_token        = ""
   byol                 = true
   software_package     = "network-essentials"
   connectivity         = "INTERNET-ACCESS"
