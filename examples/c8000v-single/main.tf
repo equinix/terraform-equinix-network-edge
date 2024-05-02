@@ -5,11 +5,12 @@ provider "equinix" {
 
 module "c8000v" {
   source               = "../../modules/c8000v"
-  name                 = "tf-c8000v-router-single"
+  name                 = "tf-c8000v-router-msla-single"
   metro_code           = var.metro_code_primary
-  platform             = "small"
+  platform             = "medium"
   account_number       = "664566"
-  license_token        = "123456"
+  license_token        = "ZTRjZTdlYmYtZjQ3Zi00MGI5LWJhMjMtNjQ0MWZiZWNhZWEyLTE1OTQ5NjU2"
+  byol                 = true
   software_package     = "network-essentials"
   connectivity         = "INTERNET-ACCESS"
   project_id           = "e6be59d9-62c0-4140-aad6-150f0700203c"
@@ -25,7 +26,7 @@ module "c8000v" {
 }
 
 resource "equinix_network_ssh_key" "johndoe" {
-  name       = "johndoe-pri-0430-1"
+  name       = "johndoe-pri-0501-byol-10"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }

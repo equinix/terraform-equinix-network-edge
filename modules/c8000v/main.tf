@@ -24,7 +24,7 @@ resource "equinix_network_device" "non_cluster" {
     }
   }
   self_managed         = true
-  byol                 = true
+  byol                 = var.byol
   name                 = var.name
   project_id           = var.project_id
   hostname             = var.hostname
@@ -35,7 +35,7 @@ resource "equinix_network_device" "non_cluster" {
   metro_code           = var.metro_code
   connectivity         = var.connectivity
   account_number       = var.account_number
-  license_token        = var.license_token
+  license_token        = var.byol ? var.license_token : null
   term_length          = var.term_length
   interface_count      = var.interface_count
   notifications        = var.notifications

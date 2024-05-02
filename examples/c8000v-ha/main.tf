@@ -8,6 +8,7 @@ module "c8000v_ha" {
   name                 = "tf-c8000v-router-ha"
   metro_code           = var.metro_code_primary
   platform             = "small"
+  byol                 = true
   account_number       = "664566"
   license_token        = "N2FiZTJiZWQtYTE5ZS00NGU1LTg0ZmItOTc1YTI4OTQ0MWM0LTE2NjkzMjI2%0AOTg1NDV8ZlFaWGNUMWNDZDlMbUYvbllKeGtIZlA5bDgzUU9nOFlOMUdqUmM4%0AaVBYaz0%3D%0A"
   software_package     = "network-essentials"
@@ -34,13 +35,13 @@ module "c8000v_ha" {
 }
 
 resource "equinix_network_ssh_key" "johndoe_pri" {
-  name       = "johndoe-pri-0430-3"
+  name       = "johndoe-pri-0502-ha-7"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }
 
 resource "equinix_network_ssh_key" "johndoe_sec" {
-  name       = "johndoe-sec-0430-3"
+  name       = "johndoe-sec-0502-ha-7"
   public_key = var.ssh_rsa_public_key
   project_id = "e6be59d9-62c0-4140-aad6-150f0700203c"
 }

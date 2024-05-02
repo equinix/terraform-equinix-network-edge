@@ -57,6 +57,12 @@ variable "license_token" {
   default     = ""
 }
 
+variable "byol" {
+  description = "License token"
+  type        = string
+  default     = true
+}
+
 variable "term_length" {
   description = "Term length in months"
   type        = number
