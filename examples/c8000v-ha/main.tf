@@ -13,7 +13,7 @@ module "c8000v_ha" {
   license_token        = ""
   software_package     = "network-essentials"
   connectivity         = "INTERNET-ACCESS"
-  project_id           = ""
+  project_id           = "e6be59d9-62c0-4140-aad6-150f07002234"
   term_length          = 1
   notifications        = ["test@test.com"]
   hostname             = "c8000v-pri"
