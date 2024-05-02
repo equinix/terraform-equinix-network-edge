@@ -37,7 +37,7 @@ module "c8000v_ha" {
 resource "equinix_network_ssh_key" "johndoe_pri" {
   name       = "johndoe-pri-0502-ha-7"
   public_key = var.ssh_rsa_public_key
-  project_id = ""
+  project_id = "e6be59d9-62c0-4140-aad6-150f07002234"
 }
 
 resource "equinix_network_ssh_key" "johndoe_sec" {
