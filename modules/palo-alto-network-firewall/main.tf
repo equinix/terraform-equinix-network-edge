@@ -19,7 +19,6 @@ resource "equinix_network_device" "non_cluster" {
 
   count = !var.cluster.enabled ? 1 : 0
   lifecycle {
-    ignore_changes = [version, core_count]
     precondition {
       condition     = length(var.hostname) >= 2 && length(var.hostname) <= 10
       error_message = "Device hostname should consist of 2 to 10 characters."

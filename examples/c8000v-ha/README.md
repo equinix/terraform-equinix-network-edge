@@ -1,10 +1,10 @@
 # Network Edge C8000V Router Single Device Example
 
-This example demonstrates creation of Network Edge C8000V Router Single device. It will:
+This example demonstrates creation of Network Edge C8000V Router HA device. It will:
 
 - Create a ACL template
 - Create an SSH key
-- Provision C8000V Router Single device
+- Provision C8000V Router HA device
 
 ## Usage
 
@@ -40,14 +40,14 @@ resources.
 
 | Name                                                   | Source                  | Version |
 |--------------------------------------------------------|-------------------------|---------|
-| <a name="module_c8000v"></a> [c8000v](#module\_c8000v) | ../../../modules/c8000v | n/a     |
+| <a name="module_c8000v"></a> [c8000v](#module\_c8000v) | ../../../modules/c8000v | 0.1.3   |
 
 ## Resources
 
 | Name                                                                                                                                          | Type     |
 |-----------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| [equinix_network_acl_template.c8000v_pri](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_acl_template) | resource |
-| [equinix_network_ssh_key.johndoe](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_ssh_key)              | resource |
+| [equinix_network_acl_template.c8000v_pri](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_acl_template) | resource |
+| [equinix_network_ssh_key.johndoe](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_ssh_key)      | resource |
 
 ## Inputs
 

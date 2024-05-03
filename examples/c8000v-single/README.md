@@ -44,10 +44,10 @@ resources.
 
 ## Resources
 
-| Name                                                                                                                                          | Type     |
-|-----------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| [equinix_network_acl_template.c8000v_pri](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_acl_template) | resource |
-| [equinix_network_ssh_key.johndoe](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_ssh_key)              | resource |
+| Name                                                                                                                                                  | Type     |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| [equinix_network_acl_template.c8000v_pri](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_acl_template) | resource |
+| [equinix_network_ssh_key.johndoe](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_ssh_key)              | resource |
 
 ## Inputs
 

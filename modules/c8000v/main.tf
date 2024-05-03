@@ -16,13 +16,6 @@ data "equinix_network_device_software" "this" {
 }
 
 resource "equinix_network_device" "non_cluster" {
-  lifecycle {
-    ignore_changes = [version, core_count]
-    precondition {
-      condition     = length(var.hostname) >= 2 && length(var.hostname) <= 10
-      error_message = "Device hostname should consist of 2 to 10 characters."
-    }
-  }
   self_managed         = true
   byol                 = var.byol
   name                 = var.name
@@ -40,7 +33,7 @@ resource "equinix_network_device" "non_cluster" {
   interface_count      = var.interface_count
   notifications        = var.notifications
   acl_template_id      = var.acl_template_id != "" ? var.acl_template_id : null
-  additional_bandwidth = var.additional_bandwidth > 0 ? var.additional_bandwidth : null
+  additional_bandwidth = var.additional_bandwidth > 0 ? var.additional_bandwidth : 0
   ssh_key {
     username = var.ssh_key.userName
     key_name = var.ssh_key.keyName
@@ -56,7 +49,7 @@ resource "equinix_network_device" "non_cluster" {
       account_number       = var.secondary.account_number
       notifications        = var.notifications
       acl_template_id      = try(var.secondary.acl_template_id, null)
-      additional_bandwidth = var.additional_bandwidth > 0 ? var.additional_bandwidth : null
+      additional_bandwidth = var.additional_bandwidth > 0 ? var.additional_bandwidth : 0
       ssh_key {
         username = var.ssh_key.userName
         key_name = var.ssh_key.keyName

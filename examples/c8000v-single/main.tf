@@ -8,8 +8,8 @@ module "c8000v" {
   name                 = "tf-c8000v-router-msla-single"
   metro_code           = var.metro_code_primary
   platform             = "medium"
-  account_number       = "664566"
-  license_token        = ""
+  account_number       = "123456"
+  license_token        = "ZTTTAAZTABCDFKKKNMNWYUXCVSJWLADJEsKKENFCNMKKKKKAQW"
   byol                 = true
   software_package     = "network-essentials"
   connectivity         = "INTERNET-ACCESS"
