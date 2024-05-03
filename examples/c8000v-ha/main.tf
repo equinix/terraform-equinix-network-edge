@@ -9,7 +9,7 @@ module "c8000v_ha" {
   metro_code           = var.metro_code_primary
   platform             = "small"
   byol                 = true
-  account_number       = "664566"
+  account_number       = "123456"
   license_token        = ""
   software_package     = "network-essentials"
   connectivity         = "INTERNET-ACCESS"
