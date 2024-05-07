@@ -28,12 +28,12 @@ resource "equinix_network_device" "non_cluster" {
   metro_code           = var.metro_code
   connectivity         = var.connectivity
   account_number       = var.account_number
-  license_token        = var.byol ? var.license_token : null
+  license_token        = var.byol ? (var.license_token != "" ? var.license_token : null) : null
   term_length          = var.term_length
   interface_count      = var.interface_count
   notifications        = var.notifications
-  acl_template_id      = var.acl_template_id != "" ? var.acl_template_id : null
-  additional_bandwidth = var.additional_bandwidth > 0 ? var.additional_bandwidth : 0
+  acl_template_id      = var.acl_template_id
+  additional_bandwidth = var.additional_bandwidth > 0 ? var.additional_bandwidth : null
   ssh_key {
     username = var.ssh_key.userName
     key_name = var.ssh_key.keyName

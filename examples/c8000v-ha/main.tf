@@ -10,7 +10,6 @@ module "c8000v_ha" {
   platform             = "small"
   byol                 = true
   account_number       = "123456"
-  license_token        = ""
   software_package     = "network-essentials"
   connectivity         = "INTERNET-ACCESS"
   project_id           = "e6be59d9-62c0-4140-aad6-150f07002234"
@@ -28,7 +27,6 @@ module "c8000v_ha" {
     metro_code           = var.metro_code_secondary
     hostname             = "c8000v-sec"
     account_number       = "664566"
-    license_token        = ""
     additional_bandwidth = 50
     acl_template_id      = equinix_network_acl_template.c8000v_sec.id
   }
@@ -61,7 +59,7 @@ resource "equinix_network_acl_template" "c8000v_pri" {
 resource "equinix_network_acl_template" "c8000v_sec" {
   name        = "tf-c8000v-sec"
   description = "Secondary C8000V Router ACL template"
-  project_id  = "e6be59d9-62c0-4140-aad6-150f07002234"
+  project_id  = "e6be59d9-62c0-4140-aad6-150f0700203c"
   inbound_rule {
     subnet   = "12.16.103.0/24"
     protocol = "TCP"
