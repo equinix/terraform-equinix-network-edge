@@ -32,7 +32,7 @@ variable "software_package" {
   type        = string
   validation {
     condition     = can(regex("^(network-advantage|network-essentials|network-premier)$", var.software_package))
-    error_message = "One of following software packages are supported: STD."
+    error_message = "One of following software packages are supported: network-advantage or network-essentials or network-premier."
   }
 }
 
@@ -40,21 +40,23 @@ variable "name" {
   description = "Device name"
   type        = string
   validation {
-    condition     = length(var.name) >= 2 && length(var.name) <= 50
-    error_message = "Device name should consist of 2 to 50 characters."
+    condition     = length(var.name) >= 3 && length(var.name) <= 50
+    error_message = "Device name should consist of 3 to 50 characters."
   }
 }
 
 variable "hostname" {
   description = "Device hostname"
   type        = string
-  default     = ""
+  validation {
+    condition     = length(var.hostname) >= 2 && length(var.hostname) <= 30
+    error_message = "host name should consist of 2 to 30 characters."
+  }
 }
 
 variable "license_token" {
   description = "License token"
   type        = string
-  default     = ""
 }
 
 variable "byol" {
@@ -99,10 +101,10 @@ variable "connectivity" {
 variable "additional_bandwidth" {
   description = "Additional internet bandwidth for a device"
   type        = number
-  default     = 0
+  default     = null
   validation {
-    condition     = var.additional_bandwidth == 0 || (var.additional_bandwidth >= 25 && var.additional_bandwidth <= 2001)
-    error_message = "Additional internet bandwidth should be between 25 and 2001 Mbps."
+    condition     = var.additional_bandwidth == 0 || (var.additional_bandwidth >= 25 && var.additional_bandwidth <= 5001)
+    error_message = "Additional internet bandwidth should be between 25 and 5001 Mbps."
   }
 }
 variable "ssh_key" {
@@ -136,8 +138,8 @@ variable "secondary" {
     error_message = "Key 'hostname' has to be defined for secondary device. Valid hostname has to be from 2 to 10 characters long."
   }
   validation {
-    condition     = !try(var.secondary.enabled, false) || try(var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 2001, true)
-    error_message = "Key 'additional_bandwidth' has to be between 25 and 2001 Mbps."
+    condition     = !try(var.secondary.enabled, false) || try(var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 5001, true)
+    error_message = "Key 'additional_bandwidth' has to be between 25 and 5001 Mbps."
   }
   validation {
     condition     = !try(var.secondary.enabled, false) || try(var.secondary.acl_template_id != null, true)

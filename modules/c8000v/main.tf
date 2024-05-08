@@ -49,7 +49,7 @@ resource "equinix_network_device" "non_cluster" {
       account_number       = var.secondary.account_number
       notifications        = var.notifications
       acl_template_id      = try(var.secondary.acl_template_id, null)
-      additional_bandwidth = var.additional_bandwidth > 0 ? var.additional_bandwidth : 0
+      additional_bandwidth = var.additional_bandwidth > 0 ? var.additional_bandwidth : null
       ssh_key {
         username = var.ssh_key.userName
         key_name = var.ssh_key.keyName
