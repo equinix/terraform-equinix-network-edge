@@ -1,6 +1,6 @@
 variable "metro_code" {
   description = "Device location metro code"
-  type        = string
+  type = string
   validation {
     condition     = can(regex("^[A-Z]{2}$", var.metro_code))
     error_message = "Valid metro code consists of two capital letters, i.e. SV, DC."
