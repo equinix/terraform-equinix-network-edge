@@ -61,7 +61,7 @@ variable "license_token" {
 }
 
 variable "byol" {
-  description = "License token"
+  description = "Bring your Own License"
   type        = string
   default     = true
 }
