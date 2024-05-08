@@ -1,6 +1,6 @@
 variable "metro_code" {
   description = "Device location metro code"
-  type = string
+  type        = string
   validation {
     condition     = can(regex("^[A-Z]{2}$", var.metro_code))
     error_message = "Valid metro code consists of two capital letters, i.e. SV, DC."
@@ -86,7 +86,7 @@ variable "notifications" {
 
 variable "acl_template_id" {
   description = "Identifier of an ACL template that will be applied on a device"
-  type = string
+  type        = string
   validation {
     condition     = try(var.acl_template_id != null, true)
     error_message = "Acl template is required."
@@ -102,7 +102,6 @@ variable "connectivity" {
 variable "additional_bandwidth" {
   description = "Additional internet bandwidth for a device"
   type        = number
-  default     = 25
   validation {
     condition     = var.additional_bandwidth == 0 || (var.additional_bandwidth >= 25 && var.additional_bandwidth <= 5001)
     error_message = "Additional internet bandwidth should be between 25 and 5001 Mbps."
@@ -110,7 +109,7 @@ variable "additional_bandwidth" {
 }
 variable "ssh_key" {
   description = "SSH public key for a device"
-    type = object({
+  type = object({
     userName = string
     keyName  = string
   })
