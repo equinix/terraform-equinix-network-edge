@@ -86,7 +86,7 @@ variable "notifications" {
 
 variable "acl_template_id" {
   description = "Identifier of an ACL template that will be applied on a device"
-  type        = string
+  type = string
   validation {
     condition     = try(var.acl_template_id != null, true)
     error_message = "Acl template is required."
