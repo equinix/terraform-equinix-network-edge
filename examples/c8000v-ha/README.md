@@ -1,4 +1,4 @@
-# Network Edge C8000V Router Single Device Example
+# Network Edge C8000V Router HA Device Example
 
 This example demonstrates creation of Network Edge C8000V Router HA device. It will:
 
