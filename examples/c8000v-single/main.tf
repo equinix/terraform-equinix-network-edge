@@ -18,7 +18,7 @@ module "c8000v" {
   notifications        = ["test@test.com"]
   hostname             = "c8000v-pri"
   acl_template_id      = equinix_network_acl_template.c8000v_pri.id
-  ssh_key              = {
+  ssh_key = {
     userName = "johndoe-primary"
     keyName  = equinix_network_ssh_key.johndoe.name
   }
