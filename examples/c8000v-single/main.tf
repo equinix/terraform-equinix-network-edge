@@ -4,20 +4,21 @@ provider "equinix" {
 }
 
 module "c8000v" {
-  source           = "../../modules/c8000v"
-  name             = "tf-c8000v-router-msla-single"
-  metro_code       = var.metro_code_primary
-  platform         = "medium"
-  account_number   = "123456"
-  byol             = true
-  software_package = "network-essentials"
-  connectivity     = "INTERNET-ACCESS"
-  project_id       = "e6be59d9-62c0-4140-aad6-150f07002234"
-  term_length      = 1
-  notifications    = ["test@test.com"]
-  hostname         = "c8000v-pri"
-  acl_template_id  = equinix_network_acl_template.c8000v_pri.id
-  ssh_key = {
+  source               = "../../modules/c8000v"
+  name                 = "tf-c8000v-router-msla-single"
+  metro_code           = var.metro_code_primary
+  platform             = "medium"
+  account_number       = "123456"
+  byol                 = true
+  software_package     = "network-essentials"
+  connectivity         = "INTERNET-ACCESS"
+  additional_bandwidth = 100
+  project_id           = "e6be59d9-62c0-4140-aad6-150f07002234"
+  term_length          = 1
+  notifications        = ["test@test.com"]
+  hostname             = "c8000v-pri"
+  acl_template_id      = equinix_network_acl_template.c8000v_pri.id
+  ssh_key              = {
     userName = "johndoe-primary"
     keyName  = equinix_network_ssh_key.johndoe.name
   }
