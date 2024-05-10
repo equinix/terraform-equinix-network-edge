@@ -1,4 +1,4 @@
-# Network Edge Virtual Device NGINX SubModule
+# Network Edge Virtual Device C8000V SDWAN SubModule
 
 The Network Edge Virtual Device C8000V SDWAN(C8000V controller mode) Module will create C8000V SDWAN devices on the Equinix
 Network edge platform.
@@ -40,12 +40,12 @@ No modules.
 
 ## Resources
 
-| Name                                                                                                                                             | Type        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| [equinix_network_device.non_cluster](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_device)               | resource    |
-| [equinix_network_device_platform.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/network_device_platform) | data source |
-| [equinix_network_device_software.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/network_device_software) | data source |
-| [equinix_network_device_type.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/network_device_type)         | data source |
+| Name                                                                                                                                                     | Type        |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| [equinix_network_device.non_cluster](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_device)               | resource    |
+| [equinix_network_device_platform.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/equinix_network_device_platform) | data source |
+| [equinix_network_device_software.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/equinix_network_device_software) | data source |
+| [equinix_network_device_type.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/equinix_network_device_type)         | data source |
 
 ## Inputs
 

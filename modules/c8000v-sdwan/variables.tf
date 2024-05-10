@@ -10,7 +10,10 @@ variable "metro_code" {
 variable "account_number" {
   description = "Billing account number for a device"
   type        = string
-  default     = 0
+  validation {
+    condition     = length(var.account_number) > 0 && var.account_number != null
+    error_message = "Account number must not be blank or null."
+  }
 }
 
 variable "platform" {
@@ -68,11 +71,11 @@ variable "notifications" {
 }
 
 variable "acl_template_id" {
-  description = "Identifier of an ACL template that will be applied on a device"
+  description = "Identifier of an ACL template that will be applied on a device."
   type        = string
   validation {
     condition     = length(var.acl_template_id) > 0
-    error_message = "acl_template_id is mandatory"
+    error_message = "acl template is mandatory."
   }
 }
 
@@ -81,7 +84,7 @@ variable "additional_bandwidth" {
   type        = number
   default     = 0
   validation {
-    condition     = var.additional_bandwidth == 0 || (var.additional_bandwidth >= 25 && var.additional_bandwidth <= 2001)
+    condition     = var.additional_bandwidth == 0 || (var.additional_bandwidth >= 25 && var.additional_bandwidth <= 5001)
     error_message = "Additional internet bandwidth should be between 25 and 2001 Mbps."
   }
 }
@@ -151,7 +154,7 @@ variable "secondary" {
     error_message = "Key 'metro_code' has to be defined for secondary device. Valid metro code consists of two capital letters, i.e. SV, DC."
   }
   validation {
-    condition     = try(var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 2001, true)
+    condition     = try(var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 5001, true)
     error_message = "Key 'additional_bandwidth' has to be between 25 and 2001 Mbps."
   }
   validation {
