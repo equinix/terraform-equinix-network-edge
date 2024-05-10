@@ -1,4 +1,4 @@
-# Network Edge Virtual Device C8000V SDWAN SubModule
+# Network Edge Virtual Device C8000V SDWAN(C8000V controller mode) SubModule
 
 The Network Edge Virtual Device C8000V SDWAN(C8000V controller mode) Module will create C8000V SDWAN devices on the Equinix
 Network edge platform.
