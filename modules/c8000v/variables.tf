@@ -16,7 +16,7 @@ variable "account_number" {
   description = "Billing account number for a device"
   type        = string
   validation {
-    condition     = length(var.account_number) > 0 && var.account_number != null
+    condition     = var.account_number != null && length(var.account_number) > 0
     error_message = "Account number must not be blank or null."
   }
 }
