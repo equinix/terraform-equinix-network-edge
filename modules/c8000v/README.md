@@ -1,13 +1,12 @@
-# Network Edge Virtual Device PA-VM SubModule
+# Network Edge Virtual Device C8000V SubModule
 
-The Network Edge Virtual Device PA-VM Module will create Palo Alto Networks VM series firewall devices on the Equinix
+The Network Edge Virtual Device C8000V Module will create C8000V autonomous mode devices on the Equinix
 Network edge platform.
 
 1. Single or Non HA device
 2. HA devices
-3. Cluster devices
 
-Please refer to the pa-vm-firewall-* examples in this module's registry for more details on how to leverage the
+Please refer to the c8000v-* examples in this module's registry for more details on how to leverage the
 submodule.
 
 <!-- Begin Module Docs (Do not edit contents) -->
@@ -40,13 +39,13 @@ No modules.
 
 ## Resources
 
-| Name                                                                                                                                                     | Type        |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| [equinix_network_device.cluster](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_device)                   | resource    |
-| [equinix_network_device.non_cluster](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_device)               | resource    |
-| [equinix_network_device_platform.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/equinix_network_device_platform) | data source |
-| [equinix_network_device_software.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/equinix_network_device_software) | data source |
-| [equinix_network_device_type.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/equinix_network_device_type)         | data source |
+| Name                                                                                                                                             | Type        |
+|--------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
+| [equinix_network_device.cluster](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_device)                   | resource    |
+| [equinix_network_device.non_cluster](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_device)               | resource    |
+| [equinix_network_device_platform.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/network_device_platform) | data source |
+| [equinix_network_device_software.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/network_device_software) | data source |
+| [equinix_network_device_type.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/network_device_type)         | data source |
 
 ## Inputs
 
@@ -54,6 +53,8 @@ No modules.
 |------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|-----------------------------------------|:--------:|
 | <a name="input_metro_code"></a> [metro\_code](#input\_metro\_code)                                         | Device location metro code                                                                                                                | `string`                                                                      | n/a                                     |   yes    |
 | <a name="input_name"></a> [name](#input\_name)                                                             | Device name                                                                                                                               | `string`                                                                      | n/a                                     |   yes    |
+| <a name="input_version"></a> [version](#input\_name)                                                       | Device Version                                                                                                                            | `string`                                                                      | n/a                                     |   yes    |
+| <a name="input_liense_token"></a> [license_token](#input\_license\_token)                                  | License Token                                                                                                                             | `string`                                                                      | n/a                                     |    no    |
 | <a name="input_notifications"></a> [notifications](#input\_notifications)                                  | List of email addresses that will receive device status notifications                                                                     | `list(string)`                                                                | n/a                                     |   yes    |
 | <a name="input_platform"></a> [platform](#input\_platform)                                                 | Device platform flavor that determines number of CPU cores and memory                                                                     | `string`                                                                      | n/a                                     |   yes    |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id)                                         | project\_id                                                                                                                               | `string`                                                                      | n/a                                     |   yes    |

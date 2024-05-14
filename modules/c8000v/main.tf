@@ -1,6 +1,6 @@
 data "equinix_network_device_type" "this" {
-  category = "FIREWALL"
-  vendor   = "Palo Alto Networks"
+  category = "ROUTER"
+  vendor   = "Cisco"
 }
 
 data "equinix_network_device_platform" "this" {
@@ -16,16 +16,8 @@ data "equinix_network_device_software" "this" {
 }
 
 resource "equinix_network_device" "non_cluster" {
-
-  count = !var.cluster.enabled ? 1 : 0
-  lifecycle {
-    precondition {
-      condition     = length(var.hostname) >= 2 && length(var.hostname) <= 10
-      error_message = "Device hostname should consist of 2 to 10 characters."
-    }
-  }
   self_managed         = true
-  byol                 = true
+  byol                 = var.byol
   name                 = var.name
   project_id           = var.project_id
   hostname             = var.hostname
@@ -36,10 +28,11 @@ resource "equinix_network_device" "non_cluster" {
   metro_code           = var.metro_code
   connectivity         = var.connectivity
   account_number       = var.account_number
+  license_token        = var.byol ? (var.license_token != "" ? var.license_token : null) : null
   term_length          = var.term_length
   interface_count      = var.interface_count
   notifications        = var.notifications
-  acl_template_id      = var.acl_template_id != "" ? var.acl_template_id : null
+  acl_template_id      = var.acl_template_id
   additional_bandwidth = var.additional_bandwidth > 0 ? var.additional_bandwidth : null
   ssh_key {
     username = var.ssh_key.userName
@@ -61,48 +54,6 @@ resource "equinix_network_device" "non_cluster" {
         username = var.ssh_key.userName
         key_name = var.ssh_key.keyName
       }
-    }
-  }
-}
-
-resource "equinix_network_device" "cluster" {
-  count = var.cluster.enabled ? 1 : 0
-  lifecycle {
-    ignore_changes = [version, core_count]
-  }
-  self_managed           = true
-  byol                   = true
-  name                   = var.name
-  type_code              = data.equinix_network_device_type.this.code
-  package_code           = var.software_package
-  version                = data.equinix_network_device_software.this.version
-  core_count             = data.equinix_network_device_platform.this.core_count
-  metro_code             = var.metro_code
-  account_number         = var.account_number
-  term_length            = var.term_length
-  interface_count        = var.interface_count
-  notifications          = var.notifications
-  connectivity           = var.connectivity
-  acl_template_id        = var.acl_template_id != "" ? var.acl_template_id : null
-  mgmt_acl_template_uuid = var.mgmt_acl_template_uuid != "" ? var.mgmt_acl_template_uuid : null
-  additional_bandwidth   = var.additional_bandwidth > 0 ? var.additional_bandwidth : null
-  ssh_key {
-    username = var.ssh_key.userName
-    key_name = var.ssh_key.keyName
-  }
-  cluster_details {
-    cluster_name = var.cluster.name
-    node0 {
-      vendor_configuration {
-        hostname = var.cluster.node0_vendor_configuration_hostname
-      }
-      license_token = var.cluster.license_token
-    }
-    node1 {
-      vendor_configuration {
-        hostname = var.cluster.node1_vendor_configuration_hostname
-      }
-      license_token = var.cluster.license_token
     }
   }
 }
