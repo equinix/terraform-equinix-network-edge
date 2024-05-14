@@ -57,7 +57,7 @@ variable "hostname" {
 variable "license_token" {
   description = "License token"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "byol" {
