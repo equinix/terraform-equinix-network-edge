@@ -24,25 +24,27 @@ Note that this example may create resources which cost money. Run 'terraform des
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
-| <a name="requirement_equinix"></a> [equinix](#requirement\_equinix) | >= 1.34 |
+| <a name="requirement_equinix"></a> [equinix](#requirement\_equinix) | ~> 1.34 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_equinix"></a> [equinix](#provider\_equinix) | >= 1.34 |
+| <a name="provider_equinix"></a> [equinix](#provider\_equinix) | ~> 1.34 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_c8000v_sdwan_single"></a> [c8000v-sdwan\-single](#module\_c8000v-sdwan\_single) | ../../modules/c8000v-sdwan | n/a |
+| <a name="module_c8000v_single"></a> [c8000v\_single](#module\_c8000v\_single) | ../../modules/c8000v-sdwan | n/a |
 
 ## Resources
 
 | Name | Type |
 |------|------|
 | [equinix_network_acl_template.c8000v_sdwan_single_wan_acl_template](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_acl_template) | resource |
+| [equinix_network_file.c8k_bootstrap_file](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_file) | resource |
+| [equinix_network_account.ny](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/network_account) | data source |
 
 ## Inputs
 
