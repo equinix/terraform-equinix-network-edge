@@ -15,7 +15,10 @@ variable "project_id" {
 variable "account_number" {
   description = "Billing account number for a device"
   type        = string
-  default     = 0
+  validation {
+    condition     = length(var.account_number) > 0 && var.account_number != null
+    error_message = "Account number must not be blank or null."
+  }
 }
 
 variable "platform" {
