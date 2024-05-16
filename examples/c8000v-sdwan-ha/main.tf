@@ -70,7 +70,7 @@ resource "equinix_network_file" "c8k_bootstrap_file_sec" {
 }
 
 data "equinix_network_account" "ny" {
-  name       = "test_account."
+  name       = "test_account"
   metro_code = "NY"
   project_id = "f1a596ed-d24a-497c-92a8-44e0923cee62"
 }

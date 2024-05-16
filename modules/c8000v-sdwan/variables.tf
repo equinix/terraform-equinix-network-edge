@@ -38,8 +38,8 @@ variable "name" {
   description = "Device name"
   type        = string
   validation {
-    condition     = length(var.name) >= 2 && length(var.name) <= 50
-    error_message = "Device name should consist of 2 to 50 characters."
+    condition     = length(var.name) >= 3 && length(var.name) <= 50
+    error_message = "Device name should consist of 3 to 50 characters."
   }
 }
 
@@ -48,7 +48,7 @@ variable "cloud_init_file_id" {
   type        = string
   validation {
     condition     = length(var.cloud_init_file_id) > 0
-    error_message = "Cloud-Init bootstrap is mandatory."
+    error_message = "Cloud-Init bootstrap file is mandatory."
   }
 }
 
@@ -75,7 +75,7 @@ variable "acl_template_id" {
   type        = string
   validation {
     condition     = length(var.acl_template_id) > 0
-    error_message = "acl template is mandatory."
+    error_message = "Acl template is mandatory."
   }
 }
 
@@ -85,7 +85,7 @@ variable "additional_bandwidth" {
   default     = 0
   validation {
     condition     = var.additional_bandwidth == 0 || (var.additional_bandwidth >= 25 && var.additional_bandwidth <= 5001)
-    error_message = "Additional internet bandwidth should be between 25 and 2001 Mbps."
+    error_message = "Additional internet bandwidth should be between 25 and 5001 Mbps."
   }
 }
 
@@ -137,14 +137,14 @@ variable "secondary" {
   })
   default = {
     enabled            = false
-    metro_code         = ""
-    cloud_init_file_id = ""
-    acl_template_id    = ""
-    account_number     = ""
+    metro_code         = null
+    cloud_init_file_id = null
+    acl_template_id    = null
+    account_number     = null
     vendor_configuration = {
-      hostname        = ""
-      siteId          = ""
-      systemIpAddress = ""
+      hostname        = null
+      siteId          = null
+      systemIpAddress = null
     }
     additional_bandwidth = null
   }
@@ -157,9 +157,19 @@ variable "secondary" {
     condition     = try(var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 5001, true)
     error_message = "Key 'additional_bandwidth' has to be between 25 and 2001 Mbps."
   }
+
   validation {
-    condition     = try(var.secondary.acl_template_id != null, true)
-    error_message = "WAN ACL template is required."
+    condition     = try(!var.secondary.enabled || (length(var.secondary.account_number) > 0 && var.secondary.account_number != null), true)
+    error_message = "Secondary account number must not be blank or null when secondary is enabled."
+  }
+
+  validation {
+    condition     = try(!var.secondary.enabled || length(var.secondary.cloud_init_file_id) > 0, true)
+    error_message = "Secondary Cloud-Init bootstrap file is mandatory."
+  }
+  validation {
+    condition     = try(var.secondary.enabled == false || var.secondary.acl_template_id != null, true)
+    error_message = "Secondary WAN ACL template is required."
   }
   validation {
     condition     = var.secondary.enabled ? can(length(var.secondary.vendor_configuration.hostname)) && length(var.secondary.vendor_configuration.hostname) >= 2 && length(var.secondary.vendor_configuration.hostname) <= 10 : true

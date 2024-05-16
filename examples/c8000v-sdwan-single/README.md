@@ -42,7 +42,7 @@ Note that this example may create resources which cost money. Run 'terraform des
 
 | Name | Type |
 |------|------|
-| [equinix_network_acl_template.c8000v_sdwan_single_wan_acl_template](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_acl_template) | resource |
+| [equinix_network_acl_template.c8000v_sdwan_single_wan_acl_template](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_acl_template) | resource |
 
 ## Inputs
 
