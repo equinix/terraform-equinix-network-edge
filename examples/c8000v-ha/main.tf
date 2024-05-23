@@ -26,7 +26,7 @@ module "c8000v_ha" {
     enabled              = true
     metro_code           = var.metro_code_secondary
     hostname             = "c8000v-sec"
-    account_number       = "664566"
+    account_number       = "123456"
     additional_bandwidth = 50
     acl_template_id      = equinix_network_acl_template.c8000v_sec.id
   }
