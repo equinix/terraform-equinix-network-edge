@@ -50,3 +50,9 @@ override.tf.json
 util/keys
 
 *-kubeconfig
+
+# IDE Files
+.idea
+.vscode
+*.iml
+*.test
