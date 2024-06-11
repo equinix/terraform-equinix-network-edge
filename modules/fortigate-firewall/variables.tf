@@ -49,13 +49,13 @@ variable "version_number" {
 variable "license_file" {
   description = "Path to the device license file"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "license_token" {
   description = "License token"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "name" {
@@ -72,7 +72,7 @@ variable "hostname" {
   type        = string
   default     = null
   validation {
-    condition     = try(var.cluster.enabled, false) || try(length(var.hostname) >= 2 && length(var.hostname) <= 30, false)
+    condition     = try(length(var.hostname) >= 2 && length(var.hostname) <= 30, true)
     error_message = "Device hostname should consist of 2 to 30 characters."
   }
 }
@@ -116,9 +116,9 @@ variable "additional_bandwidth" {
 
 variable "ssh_key" {
   description = "SSH public key for a device"
-  type        = object({
+  type = object({
     username = string
-    key_name = optional(string)
+    key_name = string
   })
 }
 
@@ -134,11 +134,30 @@ variable "interface_count" {
 
 variable "secondary" {
   description = "Secondary device attributes"
-  type        = map(any)
-  default     = tomap({
-    enabled              = false
-    additional_bandwidth = null
+  type = object({
+    enabled              = bool
+    name                 = string
+    hostname             = string
+    metro_code           = string
+    license_token        = optional(string)
+    license_file         = optional(string)
+    account_number       = string
+    notifications        = list(string)
+    additional_bandwidth = optional(number)
+    acl_template_id      = string
   })
+  default = {
+    enabled              = false
+    name                 = null
+    hostname             = null
+    metro_code           = null
+    license_token        = null
+    license_file         = null
+    account_number       = null
+    notifications        = null
+    additional_bandwidth = null
+    acl_template_id      = null
+  }
   validation {
     condition     = can(var.secondary.enabled)
     error_message = "Key 'enabled' has to be defined for secondary device."
@@ -156,7 +175,7 @@ variable "secondary" {
     error_message = "Key 'metro_code' has to be defined for secondary device. Valid metro code consists of two capital letters, i.e. SV, DC."
   }
   validation {
-    condition     = !try(var.secondary.enabled, false) || try(length(var.account_number) > 0, false)
+    condition     = !try(var.secondary.enabled, false) || try(length(var.secondary.account_number) > 0, false)
     error_message = "Key 'account_number' is required for secondary device."
   }
   validation {
@@ -172,39 +191,39 @@ variable "secondary" {
 variable "cluster" {
   description = "Cluster device attributes"
   type = object({
-    enabled      = bool
-    name = string
+    enabled = bool
+    name    = string
     node0 = object({
       vendor_configuration = object({
         hostname = string
       })
-      license_file  = optional(string)
-      license_token = optional(string)
+      license_file_id = optional(string)
+      license_token   = optional(string)
     })
     node1 = object({
       vendor_configuration = object({
         hostname = string
       })
-      license_file  = optional(string)
-      license_token = optional(string)
+      license_file_id = optional(string)
+      license_token   = optional(string)
     })
   })
   default = {
     enabled = false
-    name = null
+    name    = null
     node0 = {
       vendor_configuration = {
         hostname = null
       }
-      license_file_id  = null
-      license_token = null
+      license_file_id = null
+      license_token   = null
     }
     node1 = {
       vendor_configuration = {
         hostname = null
       }
-      license_file_id  = null
-      license_token = null
+      license_file_id = null
+      license_token   = null
     }
   }
   validation {
