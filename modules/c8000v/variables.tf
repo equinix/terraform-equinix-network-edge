@@ -145,7 +145,7 @@ variable "secondary" {
     error_message = "Key 'additional_bandwidth' has to be between 25 and 5001 Mbps."
   }
   validation {
-    condition     = !try(var.secondary.enabled, false) || try(var.secondary.acl_template_id != null, true)
+    condition     = !try(var.secondary.enabled, false) || try(var.secondary.acl_template_id != null, false)
     error_message = "Secondary Acl template is required."
   }
 }
