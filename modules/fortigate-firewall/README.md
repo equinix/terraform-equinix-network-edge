@@ -1,23 +1,3 @@
-# Network Edge Virtual Device VMWare Velocloud SDWAN SubModule
-
-The Network Edge Virtual Device VMWare Velocloud SDWAN Module will create VMWare Velocloud SDWAN devices on the Equinix
-Network edge platform.
-
-1. Single or Non HA device
-2. HA devices
-
-Please refer to the vmware-sdwan-* examples in this module's registry for more details on how to leverage the
-submodule.
-
-<!-- Begin Module Docs (Do not edit contents) -->
-
-## Equinix Network Edge Developer Documentation
-
-To see the documentation for the APIs that the Network Edge Terraform Provider is built on
-and to learn how to procure your own Client_Id and Client_Secret follow the link below:
-[Equinix Network Edge Developer Portal](https://developer.equinix.com/catalog/network-edgev1)
-<!-- End Module Docs -->
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -40,6 +20,7 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [equinix_network_device.cluster](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_device) | resource |
 | [equinix_network_device.non_cluster](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_device) | resource |
 | [equinix_network_device_platform.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/network_device_platform) | data source |
 | [equinix_network_device_software.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/network_device_software) | data source |
@@ -56,14 +37,17 @@ No modules.
 | <a name="input_notifications"></a> [notifications](#input\_notifications) | List of email addresses that will receive device status notifications | `list(string)` | n/a | yes |
 | <a name="input_platform"></a> [platform](#input\_platform) | Device platform flavor that determines number of CPU cores and memory | `string` | n/a | yes |
 | <a name="input_software_package"></a> [software\_package](#input\_software\_package) | Device software package | `string` | n/a | yes |
+| <a name="input_ssh_key"></a> [ssh\_key](#input\_ssh\_key) | SSH public key for a device | <pre>object({<br>    username = string<br>    key_name = string<br>  })</pre> | n/a | yes |
 | <a name="input_term_length"></a> [term\_length](#input\_term\_length) | Term length in months | `number` | n/a | yes |
-| <a name="input_vendor_configuration"></a> [vendor\_configuration](#input\_vendor\_configuration) | Device specific vendor configurations. | <pre>object({<br>    activationKey  = string<br>    controllerFqdn = string<br>    rootPassword   = string<br>  })</pre> | n/a | yes |
 | <a name="input_additional_bandwidth"></a> [additional\_bandwidth](#input\_additional\_bandwidth) | Additional internet bandwidth for a device | `number` | `0` | no |
-| <a name="input_connectivity"></a> [connectivity](#input\_connectivity) | Parameter to identify internet access for device. Supported Values: INTERNET-ACCESS(default) or PRIVATE or INTERNET-ACCESS-WITH-PRVT-MGMT | `string` | `"INTERNET-ACCESS"` | no |
-| <a name="input_interface_count"></a> [interface\_count](#input\_interface\_count) | Number of network interfaces on a device. If not specified, default number for a given device type will be used. | `number` | `8` | no |
+| <a name="input_cluster"></a> [cluster](#input\_cluster) | Cluster device attributes | <pre>object({<br>    enabled = bool<br>    name    = string<br>    node0 = object({<br>      vendor_configuration = object({<br>        hostname = string<br>      })<br>      license_file_id = optional(string)<br>      license_token   = optional(string)<br>    })<br>    node1 = object({<br>      vendor_configuration = object({<br>        hostname = string<br>      })<br>      license_file_id = optional(string)<br>      license_token   = optional(string)<br>    })<br>  })</pre> | <pre>{<br>  "enabled": false,<br>  "name": null,<br>  "node0": {<br>    "license_file_id": null,<br>    "license_token": null,<br>    "vendor_configuration": {<br>      "hostname": null<br>    }<br>  },<br>  "node1": {<br>    "license_file_id": null,<br>    "license_token": null,<br>    "vendor_configuration": {<br>      "hostname": null<br>    }<br>  }<br>}</pre> | no |
+| <a name="input_hostname"></a> [hostname](#input\_hostname) | Device hostname prefix | `string` | `null` | no |
+| <a name="input_interface_count"></a> [interface\_count](#input\_interface\_count) | Number of network interfaces on a device | `number` | `10` | no |
+| <a name="input_license_file"></a> [license\_file](#input\_license\_file) | Path to the device license file | `string` | `null` | no |
+| <a name="input_license_token"></a> [license\_token](#input\_license\_token) | License token | `string` | `null` | no |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | Unique identifier for the project resource where the device is scoped to | `string` | `null` | no |
-| <a name="input_secondary"></a> [secondary](#input\_secondary) | Secondary device attributes | <pre>object({<br>    enabled         = bool<br>    metro_code      = string<br>    name            = string<br>    acl_template_id = string<br>    account_number  = string<br>    vendor_configuration = object({<br>      activationKey  = string<br>      controllerFqdn = string<br>      rootPassword   = string<br>    })<br>    additional_bandwidth = optional(number)<br>  })</pre> | <pre>{<br>  "account_number": null,<br>  "acl_template_id": null,<br>  "additional_bandwidth": null,<br>  "enabled": false,<br>  "metro_code": null,<br>  "name": null,<br>  "vendor_configuration": {<br>    "activationKey": null,<br>    "controllerFqdn": null,<br>    "rootPassword": null<br>  }<br>}</pre> | no |
-| <a name="input_version_number"></a> [version\_number](#input\_version\_number) | version number | `string` | `""` | no |
+| <a name="input_secondary"></a> [secondary](#input\_secondary) | Secondary device attributes | <pre>object({<br>    enabled              = bool<br>    name                 = string<br>    hostname             = string<br>    metro_code           = string<br>    license_token        = optional(string)<br>    license_file         = optional(string)<br>    account_number       = string<br>    notifications        = list(string)<br>    additional_bandwidth = optional(number)<br>    acl_template_id      = string<br>  })</pre> | <pre>{<br>  "account_number": null,<br>  "acl_template_id": null,<br>  "additional_bandwidth": null,<br>  "enabled": false,<br>  "hostname": null,<br>  "license_file": null,<br>  "license_token": null,<br>  "metro_code": null,<br>  "name": null,<br>  "notifications": null<br>}</pre> | no |
+| <a name="input_version_number"></a> [version\_number](#input\_version\_number) | Device software package version number | `string` | `""` | no |
 
 ## Outputs
 
