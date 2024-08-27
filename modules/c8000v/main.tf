@@ -1,15 +1,14 @@
-data "equinix_network_device_type" "this" {
-  category = "ROUTER"
-  vendor   = "Cisco"
+locals {
+  equinix_network_device_type_code = "C8000V"
 }
 
 data "equinix_network_device_platform" "this" {
-  device_type = data.equinix_network_device_type.this.code
+  device_type = local.equinix_network_device_type_code
   flavor      = var.platform
 }
 
 data "equinix_network_device_software" "this" {
-  device_type = data.equinix_network_device_type.this.code
+  device_type = local.equinix_network_device_type_code
   packages    = [var.software_package]
   stable      = true
   most_recent = true
@@ -21,7 +20,7 @@ resource "equinix_network_device" "non_cluster" {
   name                 = var.name
   project_id           = var.project_id
   hostname             = var.hostname
-  type_code            = data.equinix_network_device_type.this.code
+  type_code            = local.equinix_network_device_type_code
   package_code         = var.software_package
   version              = data.equinix_network_device_software.this.version
   core_count           = data.equinix_network_device_platform.this.core_count
