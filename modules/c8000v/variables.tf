@@ -105,11 +105,13 @@ variable "connectivity" {
 variable "additional_bandwidth" {
   description = "Additional internet bandwidth for a device"
   type        = number
+  default     = 0
   validation {
     condition     = var.additional_bandwidth == 0 || (var.additional_bandwidth >= 25 && var.additional_bandwidth <= 5001)
     error_message = "Additional internet bandwidth should be between 25 and 5001 Mbps."
   }
 }
+
 variable "ssh_key" {
   description = "SSH public key for a device"
   type = object({
