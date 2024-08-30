@@ -105,11 +105,13 @@ variable "connectivity" {
 variable "additional_bandwidth" {
   description = "Additional internet bandwidth for a device"
   type        = number
+  default     = 0
   validation {
     condition     = var.additional_bandwidth == 0 || (var.additional_bandwidth >= 25 && var.additional_bandwidth <= 5001)
     error_message = "Additional internet bandwidth should be between 25 and 5001 Mbps."
   }
 }
+
 variable "ssh_key" {
   description = "SSH public key for a device"
   type = object({
@@ -141,7 +143,7 @@ variable "secondary" {
     error_message = "Key 'hostname' has to be defined for secondary device. Valid hostname has to be from 2 to 10 characters long."
   }
   validation {
-    condition     = !try(var.secondary.enabled, false) || try(var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 5001, true)
+    condition     = !try(var.secondary.enabled, false) || try(var.secondary.additional_bandwidth == "0" || (var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 5001), true)
     error_message = "Key 'additional_bandwidth' has to be between 25 and 5001 Mbps."
   }
   validation {
