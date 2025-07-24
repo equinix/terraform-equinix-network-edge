@@ -3,7 +3,8 @@ provider "equinix" {
   client_secret = var.equinix_client_secret
 }
 
-resource "aruba_edgeconnect_single" {
+module "aruba_edgeconnect_single" {
+  source               = "../../modules/aruba"
   name                 = "tf-aruba-edgeconnect"
   account_number       = "123456"
   project_id           = "e6be59d9-62c0-4140-aad6-150f0700203c"

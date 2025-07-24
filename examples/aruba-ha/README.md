@@ -1,9 +1,10 @@
-# Network Edge Aruba EdgeConnect Single Device Example
+# Network Edge Aruba EdgeConnect SDWAN HA Device Example
 
-This example demonstrates creation of Network Edge Aruba EdgeConnect Single device. It will:
+This example demonstrates creation of Network Edge Aruba EdgeConnect SDWAN HA device. It will:
 
 - Create a ACL template
-- Provision Aruba EdgeConnect Single device
+- Create an SSH key
+- Provision Aruba EdgeConnect SDWAN HA device
 
 ## Usage
 
@@ -11,7 +12,7 @@ To provision this example, you should clone the github repository and run terraf
 
 ```bash
 git clone https://github.com/equinix/terraform-equinix-network-edge.git
-cd terraform-equinix-network-edge/examples/aruba-single
+cd terraform-equinix-network-edge/examples/aruba-ha
 terraform init
 terraform apply
 ```
@@ -37,15 +38,16 @@ resources.
 
 ## Modules
 
-| Name                                                                              | Source                           | Version |
-|-----------------------------------------------------------------------------------|----------------------------------|---------|
-| <a name="module_aruba"></a> [aruba](#module\_velocloud-sdwan) | ../../../modules/aruba | n/a     |
+| Name                                                   | Source                  | Version |
+|--------------------------------------------------------|-------------------------|---------|
+| <a name="module_aruba"></a> [aruba](#module\_aruba) | ../../../modules/aruba | 0.1.3   |
 
 ## Resources
 
-| Name                                                                                                                                                           | Type     |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| [equinix_network_acl_template.aruba_EdgeConnect](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_acl_template) | resource |
+| Name                                                                                                                                          | Type     |
+|-----------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| [equinix_network_acl_template.aruba_edgeconnect](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_acl_template) | resource |
+| [equinix_network_ssh_key.johndoe](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_ssh_key)      | resource |
 
 ## Inputs
 
@@ -54,11 +56,11 @@ resources.
 | <a name="input_equinix_client_id"></a> [equinix\_client\_id](#input\_equinix\_client\_id)             | API Consumer Key available under 'My Apps' in developer portal. This argument can also be specified with the EQUINIX\_API\_CLIENTID shell environment variable.        | `string` | n/a     |   yes    |
 | <a name="input_equinix_client_secret"></a> [equinix\_client\_secret](#input\_equinix\_client\_secret) | API Consumer secret available under 'My Apps' in developer portal. This argument can also be specified with the EQUINIX\_API\_CLIENTSECRET shell environment variable. | `string` | n/a     |   yes    |
 | <a name="input_metro_code_primary"></a> [metro\_code\_primary](#input\_metro\_code\_primary)          | Device location metro code                                                                                                                                             | `string` | n/a     |   yes    |
+| <a name="input_metro_code_primary"></a> [metro\_code\_secondary](#input\_metro\_code\_primary)        | Device location metro code                                                                                                                                             | `string` | n/a     |    no    |
 
 ## Outputs
 
 | Name                                                                             | Description            |
 |----------------------------------------------------------------------------------|------------------------|
 | <a name="output_device_details"></a> [device\_details](#output\_device\_details) | Virtual device details |
-
 <!-- END_TF_DOCS -->
