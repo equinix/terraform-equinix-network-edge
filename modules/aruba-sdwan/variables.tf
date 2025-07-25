@@ -37,12 +37,34 @@ variable "platform" {
   }
 }
 
-variable "ssh_key" {
-  description = "SSH public key for a device"
+variable "vendor_configuration" {
+  description = "Device specific vendor configurations."
   type = object({
-    userName = string
-    keyName  = string
+    accountKey    = string
+    accountName   = string
+    rootPassword  = string
+    hostname      = string
   })
+
+  validation {
+    condition     = try(length(var.vendor_configuration.accountKey) > 0, false)
+    error_message = "Account Key has to be a non empty string."
+  }
+
+  validation {
+    condition     = try(length(var.vendor_configuration.accountName) > 0, false)
+    error_message = "Account Name has to be a non empty string."
+  }
+
+  validation {
+    condition     = try(length(var.vendor_configuration.applianceTag) > 0, false)
+    error_message = "Appliance Tag has to be a non empty string."
+  }
+
+  validation {
+    condition     = try(length(var.vendor_configuration.hostname) > 0, false)
+    error_message = "hostname has to be a non empty string."
+  }
 }
 
 variable "software_package" {

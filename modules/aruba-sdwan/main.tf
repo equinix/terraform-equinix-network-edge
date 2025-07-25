@@ -30,8 +30,10 @@ resource "equinix_network_device" "single" {
   additional_bandwidth = var.additional_bandwidth > 0 ? var.additional_bandwidth : null
   interface_count      = var.interface_count
   acl_template_id      = var.acl_template_id
-  ssh_key {
-    username = var.ssh_key.userName
-    key_name = var.ssh_key.keyName
+  vendor_configuration = {
+    accountKey : var.vendor_configuration.accountKey
+    accountName : var.vendor_configuration.accountName
+    applianceTag : var.vendor_configuration.applianceTag
+    hostname : var.vendor_configuration.hostname
   }
 }
