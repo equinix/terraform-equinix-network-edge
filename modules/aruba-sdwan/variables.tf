@@ -40,10 +40,10 @@ variable "platform" {
 variable "vendor_configuration" {
   description = "Device specific vendor configurations."
   type = object({
-    accountKey    = string
-    accountName   = string
-    applianceTag  = string
-    hostname      = string
+    accountKey   = string
+    accountName  = string
+    applianceTag = string
+    hostname     = string
   })
 
   validation {
@@ -135,5 +135,82 @@ variable "interface_count" {
   validation {
     condition     = can(regex("^(10)$", var.interface_count))
     error_message = "One of following values are supported: 10."
+  }
+}
+
+variable "secondary" {
+  description = "Secondary device attributes"
+  type = object({
+    enabled         = bool
+    metro_code      = string
+    name            = string
+    acl_template_id = string
+    account_number  = string
+    vendor_configuration = object({
+      accountKey   = string
+      accountName  = string
+      applianceTag = string
+      hostname     = string
+    })
+    additional_bandwidth = optional(number)
+  })
+  default = {
+    enabled         = false
+    metro_code      = null
+    name            = null
+    acl_template_id = null
+    account_number  = null
+    vendor_configuration = {
+      accountKey   = string
+      accountName  = string
+      applianceTag = string
+      hostname     = string
+    }
+    additional_bandwidth = null
+  }
+
+  validation {
+    condition     = var.secondary.enabled ? can(regex("^[A-Z]{2}$", var.secondary.metro_code)) : true
+    error_message = "Key 'metro_code' has to be defined for secondary device. Valid metro code consists of two capital letters, i.e. SV, DC."
+  }
+
+  validation {
+    condition     = !try(var.secondary.enabled, false) || try(length(var.secondary.name) >= 3 && length(var.secondary.name) <= 50, false)
+    error_message = "Key 'name' has to be defined and should consist of 3 to 50 characters."
+  }
+
+  validation {
+    condition     = try(var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 5001, true)
+    error_message = "Key 'additional_bandwidth' has to be between 25 and 5001 Mbps."
+  }
+
+  validation {
+    condition     = !try(var.secondary.enabled, false) || try(length(var.secondary.account_number) > 0, false)
+    error_message = "Key 'account_number' is required for secondary device."
+  }
+
+  validation {
+    condition     = !try(var.secondary.enabled, false) || try(length(var.secondary.acl_template_id) > 0, false)
+    error_message = "Key 'acl_template_id' is required for secondary device."
+  }
+
+  validation {
+    condition     = var.secondary.enabled ? can(length(var.secondary.vendor_configuration.accountKey)) && length(var.secondary.vendor_configuration.accountKey) > 0 : true
+    error_message = "Secondary Account Key has to be a non empty string."
+  }
+
+  validation {
+    condition     = var.secondary.enabled ? can(length(var.secondary.vendor_configuration.accountName)) && length(var.secondary.vendor_configuration.accountName) > 0 : true
+    error_message = "Secondary Account Name has to be a non empty string."
+  }
+
+  validation {
+    condition     = var.secondary.enabled ? can(length(var.secondary.vendor_configuration.applianceTag)) && length(var.secondary.vendor_configuration.applianceTag) > 0 : true
+    error_message = "Secondary Appliance Tag has to be a non empty string."
+  }
+
+  validation {
+    condition     = var.secondary.enabled ? can(length(var.secondary.vendor_configuration.hostname)) && length(var.secondary.vendor_configuration.hostname) > 0 : true
+    error_message = "Secondary hostname has to be a non empty string."
   }
 }
