@@ -42,7 +42,7 @@ variable "vendor_configuration" {
   type = object({
     accountKey    = string
     accountName   = string
-    rootPassword  = string
+    applianceTag  = string
     hostname      = string
   })
 
@@ -74,6 +74,12 @@ variable "software_package" {
     condition     = can(regex("^(VMware-2|VMware-4|VMware-8)$", var.software_package))
     error_message = "One of following software packages are supported: VMware-2, VMware-4, VMware-8."
   }
+}
+
+variable "version_number" {
+  description = "version number"
+  type        = string
+  default     = ""
 }
 
 variable "name" {

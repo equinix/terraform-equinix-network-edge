@@ -24,7 +24,7 @@ resource "equinix_network_device" "single" {
   byol                 = var.byol
   package_code         = var.software_package
   notifications        = var.notifications
-  version              = data.equinix_network_device_software.this.version
+  version              = var.version_number != "" ? var.version_number : data.equinix_network_device_software.this.version
   core_count           = data.equinix_network_device_platform.this.core_count
   term_length          = var.term_length
   additional_bandwidth = var.additional_bandwidth > 0 ? var.additional_bandwidth : null

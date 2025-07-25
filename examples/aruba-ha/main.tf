@@ -13,7 +13,6 @@ module "aruba_edgeconnect_ha" {
   software_package     = "EC-V"
   notifications        = ["test@test.com"]
   version_number       = "9.2.5"
-  core_count           = 2
   term_length          = 1
   additional_bandwidth = 30
   interface_count      = 10
