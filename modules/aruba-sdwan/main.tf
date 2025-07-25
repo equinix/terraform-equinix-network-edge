@@ -9,7 +9,7 @@ data "equinix_network_device_platform" "this" {
 
 data "equinix_network_device_software" "this" {
   device_type = local.equinix_network_device_type_code
-  packages    = [var.software_package]
+  packages    = [var.package_code]
   stable      = true
   most_recent = true
 }
@@ -22,7 +22,7 @@ resource "equinix_network_device" "single" {
   type_code            = local.equinix_network_device_type_code
   self_managed         = true
   byol                 = var.byol
-  package_code         = var.software_package
+  package_code         = var.package_code
   notifications        = var.notifications
   version              = var.version_number != "" ? var.version_number : data.equinix_network_device_software.this.version
   core_count           = data.equinix_network_device_platform.this.core_count

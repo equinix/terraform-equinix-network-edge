@@ -10,7 +10,7 @@ module "aruba_edgeconnect_single" {
   project_id           = "e6be59d9-62c0-4140-aad6-150f0700203c"
   metro_code           = var.metro_code_primary
   byol                 = true
-  software_package     = "EC-V"
+  package_code         = "EC-V"
   notifications        = ["test@test.com"]
   version_number       = "9.2.5"
   term_length          = 1
@@ -30,4 +30,10 @@ resource "equinix_network_acl_template" "aruba_edgeconnect" {
   name        = "tf-aruba-edgeconnect-pri"
   description = "Primary aruba edgeconnect ACL template"
   project_id  = "e6be59d9-62c0-4140-aad6-150f0700203c"
+  inbound_rule {
+    subnet   = "12.16.103.0/24"
+    protocol = "TCP"
+    src_port = "any"
+    dst_port = "22"
+  }
 }

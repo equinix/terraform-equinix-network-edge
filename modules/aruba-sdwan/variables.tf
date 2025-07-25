@@ -67,12 +67,12 @@ variable "vendor_configuration" {
   }
 }
 
-variable "software_package" {
+variable "package_code" {
   description = "Device software package"
   type        = string
   validation {
-    condition     = can(regex("^(VMware-2|VMware-4|VMware-8)$", var.software_package))
-    error_message = "One of following software packages are supported: VMware-2, VMware-4, VMware-8."
+    condition     = can(regex("^(EC-V)$", var.package_code))
+    error_message = "One of following software packages are supported: EC-V."
   }
 }
 
@@ -131,9 +131,9 @@ variable "additional_bandwidth" {
 variable "interface_count" {
   description = "Number of network interfaces on a device. If not specified, default number for a given device type will be used."
   type        = number
-  default     = 8
+  default     = 10
   validation {
-    condition     = can(regex("^(8)$", var.interface_count))
-    error_message = "One of following values are supported: 8."
+    condition     = can(regex("^(10)$", var.interface_count))
+    error_message = "One of following values are supported: 10."
   }
 }
