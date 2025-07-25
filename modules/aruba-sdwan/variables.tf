@@ -19,6 +19,12 @@ variable "version_number" {
   default     = ""
 }
 
+variable "byol" {
+  description = "Bring your Own License"
+  type        = string
+  default     = true
+}
+
 variable "account_number" {
   description = "Billing account number for a device"
   type        = string
@@ -59,6 +65,14 @@ variable "vendor_configuration" {
     condition     = length(var.vendor_configuration.rootPassword) == 0 || (length(var.vendor_configuration.rootPassword) >= 8 && length(var.vendor_configuration.rootPassword) <= 128)
     error_message = "Device root password has to be from 8 to 128 characters long."
   }
+}
+
+variable "ssh_key" {
+  description = "SSH public key for a device"
+  type = object({
+    userName = string
+    keyName  = string
+  })
 }
 
 variable "software_package" {

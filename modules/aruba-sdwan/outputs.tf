@@ -1,21 +1,21 @@
 output "id" {
   description = "Device identifier"
-  value       = equinix_network_device.non_cluster.uuid
+  value       = equinix_network_device.single.uuid
 }
 
 output "status" {
   description = "Device provisioning status"
-  value       = equinix_network_device.non_cluster.status
+  value       = equinix_network_device.single.status
 }
 
 output "license_status" {
   description = "Device license status"
-  value       = equinix_network_device.non_cluster.license_status
+  value       = equinix_network_device.single.license_status
 }
 
 output "account_number" {
   description = "Device billing account number"
-  value       = equinix_network_device.non_cluster.account_number
+  value       = equinix_network_device.single.account_number
 }
 
 output "cpu_count" {
@@ -37,25 +37,25 @@ output "software_version" {
 
 output "region" {
   description = "Device region"
-  value       = equinix_network_device.non_cluster.region
+  value       = equinix_network_device.single.region
 }
 
 output "ibx" {
   description = "Device IBX center"
-  value       = equinix_network_device.non_cluster.ibx
+  value       = equinix_network_device.single.ibx
 }
 
 output "ssh_ip_address" {
   description = "Device SSH interface IP address"
-  value       = equinix_network_device.non_cluster.ssh_ip_address
+  value       = equinix_network_device.single.ssh_ip_address
 }
 
 output "ssh_ip_fqdn" {
   description = "Device SSH interface FQDN"
-  value       = equinix_network_device.non_cluster.ssh_ip_fqdn
+  value       = equinix_network_device.single.ssh_ip_fqdn
 }
 
 output "interfaces" {
   description = "Device interfaces"
-  value       = equinix_network_device.non_cluster.interface
+  value       = equinix_network_device.single.interface
 }
