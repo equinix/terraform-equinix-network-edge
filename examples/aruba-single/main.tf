@@ -14,7 +14,7 @@ module "aruba_edgeconnect_single" {
   byol                 = true
   package_code         = "EC-V"
   notifications        = ["test@test.com"]
-  version              = "9.2.5"
+  version_number       = "9.2.5"
   core_count           = 2
   term_length          = 1
   additional_bandwidth = 50
