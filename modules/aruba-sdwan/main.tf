@@ -31,10 +31,10 @@ resource "equinix_network_device" "ha" {
   interface_count      = var.interface_count
   acl_template_id      = var.acl_template_id
   vendor_configuration = {
-    accountKey    = var.vendor_configuration.accountKey
-    accountName   = var.vendor_configuration.accountName
-    applianceTag  = var.vendor_configuration.applianceTag
-    hostname      = var.vendor_configuration.hostname
+    accountKey   = var.vendor_configuration.accountKey
+    accountName  = var.vendor_configuration.accountName
+    applianceTag = var.vendor_configuration.applianceTag
+    hostname     = var.vendor_configuration.hostname
   }
 
   dynamic "secondary_device" {
@@ -48,10 +48,10 @@ resource "equinix_network_device" "ha" {
       acl_template_id      = try(var.secondary.acl_template_id, null)
       additional_bandwidth = var.additional_bandwidth > 0 ? var.additional_bandwidth : null
       vendor_configuration = {
-        accountKey    = var.secondary.vendor_configuration.accountKey
-        accountName   = var.secondary.vendor_configuration.accountName
-        applianceTag  = var.secondary.vendor_configuration.applianceTag
-        hostname      = var.secondary.vendor_configuration.hostname
+        accountKey   = var.secondary.vendor_configuration.accountKey
+        accountName  = var.secondary.vendor_configuration.accountName
+        applianceTag = var.secondary.vendor_configuration.applianceTag
+        hostname     = var.secondary.vendor_configuration.hostname
       }
     }
   }

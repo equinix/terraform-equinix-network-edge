@@ -161,10 +161,10 @@ variable "secondary" {
     acl_template_id = null
     account_number  = null
     vendor_configuration = {
-      accountKey   = string
-      accountName  = string
-      applianceTag = string
-      hostname     = string
+      accountKey   = null
+      accountName  = null
+      applianceTag = null
+      hostname     = null
     }
     additional_bandwidth = null
   }
