@@ -13,12 +13,6 @@ variable "project_id" {
   default     = null
 }
 
-variable "version_number" {
-  description = "version number"
-  type        = string
-  default     = ""
-}
-
 variable "byol" {
   description = "Bring your Own License"
   type        = string
@@ -40,30 +34,6 @@ variable "platform" {
   validation {
     condition     = can(regex("^(small|medium|large)$", var.platform))
     error_message = "One of following platform flavors are supported: small, medium, large."
-  }
-}
-
-variable "vendor_configuration" {
-  description = "Device specific vendor configurations."
-  type = object({
-    activationKey  = string
-    controllerFqdn = string
-    rootPassword   = string
-  })
-
-  validation {
-    condition     = try(length(var.vendor_configuration.activationKey) > 0, false)
-    error_message = "Activation Key has to be a non empty string."
-  }
-
-  validation {
-    condition     = can(regex("^[a-zA-Z_.+-]+.[a-zA-Z-]+.[a-zA-Z-.]$", var.vendor_configuration.controllerFqdn))
-    error_message = "Controller FQDN has to be valid string. Example: www.equinix.com"
-  }
-
-  validation {
-    condition     = length(var.vendor_configuration.rootPassword) == 0 || (length(var.vendor_configuration.rootPassword) >= 8 && length(var.vendor_configuration.rootPassword) <= 128)
-    error_message = "Device root password has to be from 8 to 128 characters long."
   }
 }
 

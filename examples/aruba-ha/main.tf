@@ -34,9 +34,10 @@ module "aruba_edgeconnect_ha" {
     additional_bandwidth = 30
     acl_template_id      = equinix_network_acl_template.aruba_edgeconnect_sec.id
     vendor_configuration = {
-      activationKey  = "xxxx-xxxx-xxxx-xxxx"
-      controllerFqdn = "test.test.test"
-      rootPassword   = "xxxxxxxxxxxx"
+      accountKey : "xxxxx"
+      accountName : "xxxx"
+      applianceTag : "tests"
+      hostname : "test-aruba-tf-sec"
     }
   }
 }
