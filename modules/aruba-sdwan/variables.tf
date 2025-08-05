@@ -62,8 +62,8 @@ variable "vendor_configuration" {
   }
 
   validation {
-    condition     = try(length(var.vendor_configuration.hostname) > 0, false)
-    error_message = "hostname has to be a non empty string."
+    condition     = try(length(var.vendor_configuration.hostname) >= 2 && length(var.vendor_configuration.hostname) <= 24, false)
+    error_message = "host name should consist of 2 to 24 characters."
   }
 }
 
@@ -133,8 +133,8 @@ variable "interface_count" {
   type        = number
   default     = 10
   validation {
-    condition     = can(regex("^(10)$", var.interface_count))
-    error_message = "One of following values are supported: 10."
+    condition     = can(regex("^(10|32)$", var.interface_count))
+    error_message = "One of following values are supported: 10, 32"
   }
 }
 
@@ -210,7 +210,7 @@ variable "secondary" {
   }
 
   validation {
-    condition     = var.secondary.enabled ? can(length(var.secondary.vendor_configuration.hostname)) && length(var.secondary.vendor_configuration.hostname) > 0 : true
-    error_message = "Secondary hostname has to be a non empty string."
+    condition     = var.secondary.enabled ? (length(var.secondary.vendor_configuration.hostname) >= 2 && length(var.secondary.vendor_configuration.hostname) <= 24) : true
+    error_message = "Secondary hostname should consist of 2 to 24 characters."
   }
 }
