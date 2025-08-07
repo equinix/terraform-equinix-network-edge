@@ -41,11 +41,11 @@ Note that this example may create resources which cost money. Run 'terraform des
 
 ## Resources
 
-| Name                                                                                                                                                     | Type |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------|------|
-| [equinix_network_acl_template.fortigate_pri](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_acl_template) | resource |
-| [equinix_network_acl_template.fortigate_sec](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_acl_template) | resource |
-| [equinix_network_ssh_key.johndoe](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_ssh_key)                 | resource |
+| Name | Type |
+|------|------|
+| [equinix_network_acl_template.fortigate_pri](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_acl_template) | resource |
+| [equinix_network_acl_template.fortigate_sec](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_acl_template) | resource |
+| [equinix_network_ssh_key.johndoe](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_ssh_key) | resource |
 
 ## Inputs
 
