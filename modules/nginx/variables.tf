@@ -110,7 +110,7 @@ variable "secondary" {
     error_message = "Key 'hostname' has to be defined for secondary device. Valid hostname has to be from 2 to 10 characters long."
   }
   validation {
-    condition     = !try(var.secondary.enabled, false) || try(var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 2001, true)
+    condition     = !try(var.secondary.enabled, false) || try(var.secondary.additional_bandwidth == "0" || (var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 2001), true)
     error_message = "Key 'additional_bandwidth' has to be between 25 and 2001 Mbps."
   }
   validation {

@@ -154,15 +154,13 @@ variable "secondary" {
     error_message = "Key 'metro_code' has to be defined for secondary device. Valid metro code consists of two capital letters, i.e. SV, DC."
   }
   validation {
-    condition     = try(var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 5001, true)
+    condition     = try(!var.secondary.enabled || var.secondary.additional_bandwidth == "0" || (var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 5001), true)
     error_message = "Key 'additional_bandwidth' has to be between 25 and 2001 Mbps."
   }
-
   validation {
     condition     = try(!var.secondary.enabled || (length(var.secondary.account_number) > 0 && var.secondary.account_number != null), true)
     error_message = "Secondary account number must not be blank or null when secondary is enabled."
   }
-
   validation {
     condition     = try(!var.secondary.enabled || length(var.secondary.cloud_init_file_id) > 0, true)
     error_message = "Secondary Cloud-Init bootstrap file is mandatory."

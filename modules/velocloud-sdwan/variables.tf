@@ -177,7 +177,7 @@ variable "secondary" {
   }
 
   validation {
-    condition     = try(var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 5001, true)
+    condition     = !try(var.secondary.enabled, false) || try(var.secondary.additional_bandwidth == "0" || (var.secondary.additional_bandwidth >= 25 && var.secondary.additional_bandwidth <= 5001), true)
     error_message = "Key 'additional_bandwidth' has to be between 25 and 5001 Mbps."
   }
 
