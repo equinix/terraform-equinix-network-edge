@@ -42,13 +42,13 @@ Note that this example may create resources which cost money. Run 'terraform des
 
 ## Resources
 
-| Name                                                                                                                                                         | Type |
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------|
-| [equinix_network_acl_template.fortigate_cluster](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_acl_template) | resource |
-| [equinix_network_file.fg_vm_license_file_node0](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_file)          | resource |
-| [equinix_network_file.fg_vm_license_file_node1](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_file)          | resource |
-| [equinix_network_ssh_key.johndoe_cluster](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_ssh_key)             | resource |
-| [equinix_network_device_type.fg_vm_type](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/equinix_network_device_type)       | data source |
+| Name | Type |
+|------|------|
+| [equinix_network_acl_template.fortigate_cluster](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_acl_template) | resource |
+| [equinix_network_file.fg_vm_license_file_node0](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_file) | resource |
+| [equinix_network_file.fg_vm_license_file_node1](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_file) | resource |
+| [equinix_network_ssh_key.johndoe_cluster](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/network_ssh_key) | resource |
+| [equinix_network_device_type.fg_vm_type](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/network_device_type) | data source |
 
 ## Inputs
 
