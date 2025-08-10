@@ -1,0 +1,88 @@
+# Network Edge Virtual Device Aviatrix Edge 7.1 SubModule
+
+The Network Edge Virtual Device Aviatrix Edge 7.1 Module will create Aviatrix Edge 7.1 devices on the Equinix
+Network edge platform.
+
+1. Single or Non HA device
+2. HA devices
+
+Please refer to the aviatrix-edge-7.1-* examples in this module's registry for more details on how to leverage the
+submodule and for Aviatix Edge 7.1 vnf specifications please check [Aviatrix specs](https://docs.equinix.com/en-us/Content/Interconnection/NE/deploy-guide/Aviatrix/NE-Aviatrix-specs.htm) document
+
+<!-- Begin Module Docs (Do not edit contents) -->
+
+## Equinix Network Edge Developer Documentation
+
+To see the documentation for the APIs that the Network Edge Terraform Provider is built on
+and to learn how to procure your own Client_Id and Client_Secret follow the link below:
+[Equinix Network Edge Developer Portal](https://developer.equinix.com/catalog/network-edgev1)
+
+<!-- End Module Docs -->
+
+<!-- BEGIN_TF_DOCS -->
+
+## Requirements
+
+| Name                                                                      | Version |
+| --------------------------------------------------------------------------- | --------- |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3  |
+| <a name="requirement_equinix"></a> [equinix](#requirement\_equinix)       | ~> 1.34 |
+
+## Providers
+
+| Name                                                          | Version |
+| --------------------------------------------------------------- | --------- |
+| <a name="provider_equinix"></a> [equinix](#provider\_equinix) | ~> 1.34 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name                                                                                                                                                     | Type        |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| [equinix_network_device.aviatrix_edge_7_1](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_device)         | resource    |
+| [equinix_network_device_platform.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/equinix_network_device_platform) | data source |
+| [equinix_network_device_software.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/equinix_network_device_software) | data source |
+| [equinix_network_device_type.this](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/equinix_network_device_type)         | data source |
+
+## Inputs
+
+| Name                                                                                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                     | Type           | Default         | Required |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ----------------- | ---------- |
+| [byol](#input\_byol)                                                                                    | This is required to upload the Aviatrix bootstrap configuration file                                                                                                                                                                                                                                                                                                                                                                            | `boolean`      | false           | yes      |
+| [name](#input\_name)                                                                                    | Device name                                                                                                                                                                                                                                                                                                                                                                                                                                     | `string`       | n/a             | yes      |
+| [package_code](#input\_package\_code)                                                                   | Device software package code. Use[equinix_network_device_software](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/equinix_network_device_software) datasource with device type code to find the supported package codes                                                                                                                                                                                       | `string`       | n/a             | yes      |
+| version                                                                                                 | VNF image version. Please refer to[certified VNF versions](https://docs.equinix.com/en-us/Content/Interconnection/NE/user-guide/NE-certified-VNFs.htm) document for the supported versions. If this value is not passed most recent and stable version will be used by invoking [equinix_network_device_software](https://registry.terraform.io/providers/equinix/equinix/latest/docs/data-sources/equinix_network_device_software) data source | `string`       | n/a             | yes      |
+| [project_id](#input\_project\_id)                                                                       | org project id                                                                                                                                                                                                                                                                                                                                                                                                                                  | `string`<br /> | n/a             | yes      |
+| [metro\_code](#input\_metro\_code)                                                                      | Device location metro codeDevice software package                                                                                                                                                                                                                                                                                                                                                                                               | `string`       | n/a             | yes      |
+| [account\_number](#input\_account\_number)                                                              | Billing account number for a device                                                                                                                                                                                                                                                                                                                                                                                                             | `string`       | n/a             | yes      |
+| [connectivity](#input\_connectivity)                                                                    | This is to identify the internet access for device. Supported values are INTERNET-ACCESS or PRIVATE. Default is INTERNET-ACCESS                                                                                                                                                                                                                                                                                                                 | `string`       | n/a             | yes      |
+| [term\_length](#input\_term\_length)                                                                    | Term length in months. Supported values are 1,12,24,36                                                                                                                                                                                                                                                                                                                                                                                          | `number`       | n/a             | yes      |
+| [interface\_count](#input\_interface\_count)                                                            | Number of network interfaces on a device. If not specified, default number for a given device type will be used. This device type supports 10 interfaces. For more details check[Aviatrix Specs](https://docs.equinix.com/en-us/Content/Interconnection/NE/deploy-guide/Aviatrix/NE-Aviatrix-specs.htm)                                                                                                                                         | `number`       | 10              | no       |
+| [notifications](#input\_notifications)                                                                  | List of email addresses that will receive device status notifications                                                                                                                                                                                                                                                                                                                                                                           | `list(string)` | n/a             | yes      |
+| [cloud_init_file_id](#input\_cloudinit\_file_id)                                                        | Unique identifier of Aviatrix bootstrap file. This will be obtained by uploading the file using[equinix_network_file](https://registry.terraform.io/providers/equinix/equinix/latest/docs/resources/equinix_network_file) resource                                                                                                                                                                                                              | `string`       | n/a             | yes      |
+| <a name="input_wan_acl_template_uuid"></a> [wan\_acl\_template\_uuid](#input\_wan\_acl\_template\_uuid) | Identifier of an WAN ACL template that will be applied on a device                                                                                                                                                                                                                                                                                                                                                                              | `string`       | n/a             | yes      |
+| [additional\_bandwidth](#input\_additional\_bandwidth) <br />                                           | Additional internet bandwidth for a device. Default is 25 MBPS                                                                                                                                                                                                                                                                                                                                                                                  | `String`       | n/a             | no       |
+| [secondary](#input\_secondary)                                                                          | Secondary device attributes                                                                                                                                                                                                                                                                                                                                                                                                                     | `List(object)` | {default:false} | no       |
+
+## Outputs
+
+| Name                                                                                   | Description                     |
+| ---------------------------------------------------------------------------------------- | --------------------------------- |
+| <a name="output_account_number"></a> [account\_number](#output\_account\_number)       | Device billing account number   |
+| <a name="output_cpu_count"></a> [cpu\_count](#output\_cpu\_count)                      | Device CPU cores count          |
+| <a name="output_ibx"></a> [ibx](#output\_ibx)                                          | Device IBX center               |
+| <a name="output_id"></a> [id](#output\_id)                                             | Device identifier               |
+| <a name="output_interfaces"></a> [interfaces](#output\_interfaces)                     | Device interfaces               |
+| <a name="output_license_status"></a> [license\_status](#output\_license\_status)       | Device license status           |
+| <a name="output_memory"></a> [memory](#output\_memory)                                 | Device memory amount            |
+| <a name="output_region"></a> [region](#output\_region)                                 | Device region                   |
+| <a name="output_secondary"></a> [secondary](#output\_secondary)                        | Secondary device attributes     |
+| <a name="output_software_version"></a> [software\_version](#output\_software\_version) | Device software version         |
+| <a name="output_ssh_ip_address"></a> [ssh\_ip\_address](#output\_ssh\_ip\_address)     | Device SSH interface IP address |
+| <a name="output_ssh_ip_fqdn"></a> [ssh\_ip\_fqdn](#output\_ssh\_ip\_fqdn)              | Device SSH interface FQDN       |
+| <a name="output_status"></a> [status](#output\_status)                                 | Device provisioning status      |
+
+<!-- END_TF_DOCS -->

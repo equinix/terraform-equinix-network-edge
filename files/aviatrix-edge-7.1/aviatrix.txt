@@ -1,0 +1,20 @@
+#cloud-config
+users:
+- {lock-passwd: false, name: test, passwd: test}
+write_files:
+- {content: '{"gateway_name": "test", "dhcp": "True", "edge": "True", "caag": "True",
+    "mgmt_ip": "None", "mgmt_default_gateway": "None", "lan_ip": "<lan_ip>",
+    "wan_ip": "<wan_ip>", "wan_default_gateway": "<wan_default_gateway>", "dns_server_ip":
+    "None", "ssh_public_key": "<SSH_RSA_KEY>",
+    "join-token-expiry": "1657817835", "trustbundle": "<certificate>", "trustdomain": "aviatrixnetwork.com", "controller_ip": "<controller_ip>",
+        "launch_version": "UserConnect-6.7.1158"}', owner: 'ubuntu:ubuntu', path: /etc/test/avx_edge_cloud_init.cfg,
+      permissions: '0755'}
+
+    Valid user
+    ProfileId- <profile_id>
+    AWS profiled - <aws_profile_id>
+    Seller metro code -SV
+    Seller region -  us-east-1
+    Threads-5
+
+    Configure-
